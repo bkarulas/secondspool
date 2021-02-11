@@ -1,0 +1,39 @@
+
+section{
+    width: 90%;
+    margin: 10px auto 20px auto;
+}
+
+.secsubtitle, .singleGame{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.colxs{
+    flex: 0 0 5%;
+    max-width: 5%;
+}
+
+.colsm{
+    flex: 0 0 8.25%;
+    max-width: 8.25%;
+}
+.colmd{
+flex: 0 0 16.75%;
+max-width: 16.75%;
+}
+
+
+
+.question{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 7px;
+    font-size: 1.25rem;
+}
+
+.questiontitle, .questionanswer{
+    flex: 0 0 40%;
+    max-width: 40%;
+}

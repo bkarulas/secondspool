@@ -1,0 +1,30 @@
+#fullblock,.singleblock{
+    display: flex;
+    flex-wrap: wrap;
+    margin:auto;
+}
+
+#fullblock{
+    width: 80%;
+}
+
+.singleblock{
+    flex: 0 0 6.3%;
+    max-width: 6.3%;
+    margin: 3px 2px 5px 2px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.boardtime, .boardname{
+    width: 100%;
+}
+
+.boardtime{
+    background-color: lightgreen;
+}
+
+.boardname{
+    background-color: lightskyblue;
+}

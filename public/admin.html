@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <script  src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/admin.css">
+</head>
+<body>
+    <section id='viewallgames'>
+        <div class='sectitle'>
+            Your Games
+        </div>
+        <div class='secsubtitle'>
+            <div class='colxs'>ID</div>
+            <div class='colmd'>DATE</div>
+            <div class='colmd'>GAME</div>
+            <div class='colmd'>TYPE</div>
+            <div class='colsm'>MIN</div>
+            <div class='colsm'>MAX</div>
+            <div class='colsm'>COST</div>
+            <div class='colxs'>EDIT</div>
+            <div class='colxs'>FILL</div>
+            <div class='colxs'>DELETE</div>
+        </div>
+        <div id='allgameinfo'></div>
+    </section>
+    <section id='createnewgame'>
+        <div class='sectitle'>
+            Create a New Game
+        </div>
+        <div class='subsection'>
+            <div id='createnewgame'>
+                <div class='question'>
+                    <div class='questiontitle'>Choose a game</div>
+                    <div class='questionanswer' id='newschedule'></div>
+                </div>
+                <div class='question'>
+                    <div class='questiontitle'>What type of game do you want to play?</div>
+                    <div class='questionanswer' id='newtype'></div>
+                </div>
+                <div class='question'>
+                    <div class='questiontitle'>Box minimum for each player</div>
+                    <div class='questionanswer' id='newmin'></div>
+                </div>
+                <div class='question'>
+                    <div class='questiontitle'>Cost for the minimum boxes</div>
+                    <div class='questionanswer' id='newcost'></div>
+                </div>
+                <div class='question'>
+                    <div class='questiontitle'>Maximum boxes for each player</div>
+                    <div class='questionanswer' id='newmax'></div>
+                </div>
+                <input type='submit' value='Submit' onclick='createNewGame()'>
+            </div>
+        </div>
+    </section>
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/adminnewgame.js"></script>
+    <script src="./assets/js/adminallgames.js"></script>
+</body>
+</html>

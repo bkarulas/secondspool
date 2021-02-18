@@ -35,7 +35,7 @@ CREATE TABLE `users` (
   `email` varchar(255),
   `phone` varchar(255),
   `admin` int,
-  `active` int DEFAULT 1,
+  `act` int DEFAULT 1,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime
 );
@@ -48,6 +48,7 @@ CREATE TABLE `game` (
   `box_max` int,
   `type` int,
   `admin` int,
+  `act` int DEFAULT 1,
   `updated` datetime DEFAULT CURRENT_TIMESTAMP
 );
 

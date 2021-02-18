@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./assets/css/admin.css">
 </head>
 <body>
+<!--GAMES-->
+    <!--ALL GAMES-->
     <section id='viewallgames'>
         <div class='sectitle'>
             Your Games
@@ -20,47 +22,151 @@
             <div class='colmd'>DATE</div>
             <div class='colmd'>GAME</div>
             <div class='colmd'>TYPE</div>
-            <div class='colsm'>MIN</div>
-            <div class='colsm'>MAX</div>
+            <div class='colxs'>MIN</div>
+            <div class='colxs'>MAX</div>
             <div class='colsm'>COST</div>
+            <div class='colxs'>TAKEN</div>
+            <div class='colxs'>INFO</div>
             <div class='colxs'>EDIT</div>
             <div class='colxs'>FILL</div>
             <div class='colxs'>DELETE</div>
         </div>
         <div id='allgameinfo'></div>
     </section>
+    <!--EDIT GAME-->
+    <section id='editGame'>
+        <div class='sectitle'>
+            Edit Game
+        </div>
+        <div class='secsubtitle'>
+            <div class='colxs'>ID</div>
+            <div class='colmd'>DATE</div>
+            <div class='colmd'>GAME</div>
+            <div class='colmd'>TYPE</div>
+            <div class='colsm'>MIN</div>
+            <div class='colsm'>MAX</div>
+            <div class='colsm'>COST</div>
+            <div class='colsm'>SAVE</div>
+            <div class='colsm'>CANCLE</div>
+        </div>
+        <div class='editgameinfo'>
+            <div class='colxs' id='editid'></div>
+            <div class='colmd' id='editdate'></div>
+            <div class='colmd' id='editgame'></div>
+            <div class='colmd' id='edittype'></div>
+            <div class='colsm' id='editmin'></div>
+            <div class='colsm' id='editmax'></div>
+            <div class='colsm' id='editcost'></div>
+            <div class='colsm' id='editsave'></div>
+            <div class='colsm' id='editcancle'></div>
+        </div>
+    </section>
+    <!--NEW GAME-->
     <section id='createnewgame'>
         <div class='sectitle'>
             Create a New Game
         </div>
         <div class='subsection'>
-            <div id='createnewgame'>
-                <div class='question'>
-                    <div class='questiontitle'>Choose a game</div>
-                    <div class='questionanswer' id='newschedule'></div>
-                </div>
-                <div class='question'>
-                    <div class='questiontitle'>What type of game do you want to play?</div>
-                    <div class='questionanswer' id='newtype'></div>
-                </div>
-                <div class='question'>
-                    <div class='questiontitle'>Box minimum for each player</div>
-                    <div class='questionanswer' id='newmin'></div>
-                </div>
-                <div class='question'>
-                    <div class='questiontitle'>Cost for the minimum boxes</div>
-                    <div class='questionanswer' id='newcost'></div>
-                </div>
-                <div class='question'>
-                    <div class='questiontitle'>Maximum boxes for each player</div>
-                    <div class='questionanswer' id='newmax'></div>
-                </div>
-                <input type='submit' value='Submit' onclick='createNewGame()'>
+            <div class='question' id='newschedule'>
+                <div class='questiontitle'>Choose a game</div>
             </div>
+            <div class='question'  id='newtype'>
+                <div class='questiontitle'>What type of game do you want to play?</div>
+            </div>
+            <div class='question' id='newmin'>
+                <div class='questiontitle'>Box minimum for each player</div>
+            </div>
+            <div class='question'>
+                <div class='questiontitle'>Cost for the minimum boxes</div>
+                <input type='text' class="answer" id = 'newcost'><span class='req'>*</span></input>
+            </div>
+            <div class='question'>
+                <div class='questiontitle'>Maximum boxes for each player</div>
+                <div id='newmax'></div>
+            </div>
+            <div class='instrunctions'><span class='req'>*</span> Necessary Feild</div>
+            <input type='submit' value='Submit' onclick='createNewGame()'></input>
         </div>
     </section>
+
+<!--PLAYERS-->
+    <!--ALL PLAYERS-->
+    <section id='allplayer'>
+        <div class='sectitle'>
+            Your a Players
+        </div>
+        <div class='secsubtitle'>
+            <div class='colmd'>First Name</div>
+            <div class='collg'>Last Name</div>
+            <div class='collg'>Username</div>
+            <div class='collg'>Email</div>
+            <div class='colmd'>Phone</div>
+            <div class='colxs'>Edit</div>
+            <div class='colxs'>Delete</div>
+        </div>
+        <div id='allplayerinfo'></div>
+    </section>
+    <!--EDIT PLAYER-->
+    <section id='editplayer'>
+        <div class='sectitle'>
+            Edit a Player
+        </div>
+        <div class='secsubtitle'>
+            <div class='colmd'>First Name</div>
+            <div class='collg'>Last Name</div>
+            <div class='collg'>Username</div>
+            <div class='collg'>Email</div>
+            <div class='colmd'>Phone</div>
+            <div class='colxs'>SAVE</div>
+            <div class='colxs'>CANCLE</div>
+        </div>
+        <div class='editplayerinfo'>
+            <div class='colmd' id='editplayerfirst'></div>
+            <div class='collg' id='editplayerlast'></div>
+            <div class='collg' id='editplayeralias'></div>
+            <div class='collg' id='editplayeremail'></div>
+            <div class='colmd' id='editplayerphone'></div>
+            <div class='colxs' id='editplayersave'></div>
+            <div class='colxs' id='editplayercancle'></div>
+
+        </div>
+    </section>
+    <!--NEW PLAYER-->
+    <section id='createnewplayer'>
+        <div class='sectitle'>
+            Create a New Player
+        </div>
+        <div class='subsection'>
+            <div class='question'>
+                <div class='questiontitle'>First Name</div>
+                <input type="text" class='answer' id='newfirstname' required><span class='req'>*</span></input>
+            </div>
+            <div class='question'>
+                <div class='questiontitle'>Last Name</div>
+                <input type="text" class='answer' id='newlastname' required></input>
+            </div>
+            <div class='question'>
+                <div class='questiontitle'>Username</div>
+                <input type="text" class='answer' id='newusername'></input>
+            </div>
+            <div class='question'>
+                <div class='questiontitle'>Email Address</div>
+                <input type="text" class='answer' id='newemail' required><span class='req'>*</span></input>
+            </div>
+            <div class='question'>
+                <div class='questiontitle'>Phone Number</div>
+                <input type="text" class='answer' id='newphone'></input>
+            </div>
+            <div class='instrunctions'><span class='req'>*</span> Necessary Feild</div>
+            <input type='submit' value='Submit' onclick='createNewUser()'>
+        </div>
+    </section>
+    <!--SCRIPTS-->
     <script src="./assets/js/script.js"></script>
-    <script src="./assets/js/adminnewgame.js"></script>
-    <script src="./assets/js/adminallgames.js"></script>
+    <script src="./assets/js/admin/admin.js"></script>
+    <script src="./assets/js/admin/newgame.js"></script>
+    <script src="./assets/js/admin/allgame.js"></script>
+    <script src="./assets/js/admin/newplayer.js"></script>
+    <script src="./assets/js/admin/allplayers.js"></script>
 </body>
 </html>

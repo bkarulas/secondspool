@@ -22,4 +22,13 @@ INNER JOIN schedule s ON s.id = g.date
 INNER JOIN game_type t ON t.id = g.type
 INNER JOIN nhl_team vis ON vis.id = s.vis_id
 INNER JOIN nhl_team home ON home.id = s.home_id
-WHERE admin = 1;  /****************************<= ADMIN ID GOES HERE****************************/
+WHERE admin = 1 AND act = 1;  /****************************<= ADMIN ID GOES HERE****************************/
+
+/*ONE GAME CALLED BY GAME ID*/
+SELECT g.id, s.gametime, t.name as type, g.cost, g.box_min as min, g.box_max as max, concat(vis.team_name," @ ",home.team_name) as game
+From game g 
+INNER JOIN schedule s ON s.id = g.date
+INNER JOIN game_type t ON t.id = g.type
+INNER JOIN nhl_team vis ON vis.id = s.vis_id
+INNER JOIN nhl_team home ON home.id = s.home_id
+WHERE admin = 1 AND act = 1 AND g.id = 4;  /****************************<= ADMIN ID AND GAME ID GOES HERE****************************/

@@ -12,10 +12,10 @@ async function printNewGameOptions(){
     let dates = await getAllSchedules();
     let type = await getAllGameTypes();
     newScheduleDiv.appendChild(getFullSchedule(dates));
-    newTypeDiv.appendChild(getTypeOfGame(type));
-    newMinDiv.appendChild(getMinBoxes());
-    newCostDiv.appendChild(getThePrice('$0.00'));
-    getMaxBoxes(0);
+    newTypeDiv.appendChild(getTypeOfGame('gametype',type, 1));
+    newMinDiv.appendChild(getMinBoxes('boxmin','getNewMaxBoxes', 1));
+    newCostDiv.setAttribute('placeholder','$0.00')
+    getNewMaxBoxes(0);
 
 }
 
@@ -37,30 +37,33 @@ async function getAllGameTypes(){
 //creates the game schedule option dropdown
 function getFullSchedule(dates){
     let fullSchedule = document.createElement('select');
-        fullSchedule.setAttribute('id','fullschedule');
-        fullSchedule.setAttribute('name','fullschedule');
-        dates.forEach(date => {
-            let eachSchedule = document.createElement('option');
-            (date.id%2) ? bgcolor = 'optiondark': bgcolor = 'optionlight';
-            eachSchedule.className = bgcolor;
-            eachSchedule.setAttribute('value',date.id);
-            //gets the dates of each game
-            let gameDate = getGameDate(date.gametime, 'short');
-            //gets the time of each game
-            let gameTime = getGameTime(date.gametime);
-            eachSchedule.innerText = `${gameDate} ${gameTime} - ${date.vTeam} @ ${date.hTeam}`;
-            fullSchedule.appendChild(eachSchedule);
-        });
-        return fullSchedule;
+    fullSchedule.className ='answer'
+    fullSchedule.setAttribute('id','fullschedule');
+    fullSchedule.setAttribute('name','fullschedule');
+    dates.forEach(date => {
+        let eachSchedule = document.createElement('option');
+        (date.id%2) ? bgcolor = 'optiondark': bgcolor = 'optionlight';
+        eachSchedule.className = bgcolor;
+        eachSchedule.setAttribute('value',date.id);
+        //gets the dates of each game
+        let gameDate = getGameDate(date.gametime, 'short');
+        //gets the time of each game
+        let gameTime = getGameTime(date.gametime);
+        eachSchedule.innerText = `${gameDate} ${gameTime} - ${date.vTeam} @ ${date.hTeam}`;
+        fullSchedule.appendChild(eachSchedule);
+    });
+    return fullSchedule;
 }
 
 //create the game type options dropdown
-function getTypeOfGame(types){
+function getTypeOfGame(idTag,types, sel){
     let gameType = document.createElement('select');
-    gameType.setAttribute('id','gametype');
-    gameType.setAttribute('name','gametype');
+    gameType.className='answer';
+    gameType.setAttribute('id',`${idTag}`);
+    gameType.setAttribute('name',`${idTag}`);
     types.forEach(type => {
         let eachType = document.createElement('option');
+        (type.id==sel)?eachType.setAttribute('selected','selected'):'';
         (type.id%2) ? bgcolor = 'optiondark': bgcolor = 'optionlight';
         eachType.className = bgcolor;
         eachType.setAttribute('value',type.id);
@@ -71,15 +74,17 @@ function getTypeOfGame(types){
 }
 
 //creates the min amont of boxes drop down
-function getMinBoxes(){
+function getMinBoxes(idTag, pageSec, sel){
     let boxMin = document.createElement('select');
-    boxMin.setAttribute('id','boxmin');
-    boxMin.setAttribute('name','boxmin');
-    boxMin.setAttribute('onchange','getMaxBoxes(this.value)')
+    boxMin.className='answer';
+    boxMin.setAttribute('id',`${idTag}`);
+    boxMin.setAttribute('name',`${idTag}`);
+    boxMin.setAttribute('onchange',`${pageSec}(this.value)`)
     for (let i=0; i<minBoxes.length; i++){
         let eachMin = document.createElement('option');
         (i%2) ? bgcolor = 'optionlight': bgcolor = 'optiondark';
-        eachMin.className = bgcolor;
+        eachMin.className = `${bgcolor}`;
+        (minBoxes[i]==sel)?eachMin.setAttribute('selected','selected'):'';
         eachMin.setAttribute('value',i);
         eachMin.innerText = minBoxes[i]
         boxMin.appendChild(eachMin);
@@ -88,9 +93,10 @@ function getMinBoxes(){
 }
 
 //creates the max amont of boxes drop down arroding to the min
-function getMaxBoxes(minValue){
+function getNewMaxBoxes(minValue){
     newMaxDiv.innerHTML = '';
     let boxMax = document.createElement('select');
+    boxMax.className = 'answer';
     boxMax.setAttribute('id','boxmax');
     boxMax.setAttribute('name','boxmax');
     let boxArr = maxBoxes[minValue];
@@ -105,42 +111,30 @@ function getMaxBoxes(minValue){
     newMaxDiv.appendChild(boxMax);
 }
 
-//creat the cost per min
-function getThePrice(placeHolder){
-    let price = document.createElement('input');
-    price.setAttribute('type','text');
-    price.setAttribute('id','price');
-    price.setAttribute('name','price');
-    price.setAttribute('placeholder',placeHolder);
-    return price;
-}
-
 function createNewGame(){
-    let date = fullschedule.value;
-    let type = gametype.value;
-    let min = boxmin.value;
-    let max = boxmax.value;
-    let cost = 0;
-    admin=adminId;
-    cost = parseInt(price.value)//.substring(0, price.value.indexOf('.'))).replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
-    console.log(`COST: ${cost}`)
+    cost = parseInt(newcost.value)//.substring(0, price.value.indexOf('.'))).replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
     if (cost>0){
-        console.log(`Everything is good`)
-        //let newGame = async () => {
-        async function newGame(){
-            const res = await ("api/creategame", {
-                method: 'POST',
-                body: JSON.stringify({date, type, min, max, cost, admin}),
-                headers: {"Content-Type": "application/json"}
-            });
-        }
-        newGame().then((res) =>{
-            console.log(res);
+        console.log('COST IS GOOD');
+        fetch("api/game/create",{
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                info:{
+                    date:fullschedule.value,
+                    type:gametype.value,
+                    min:minBoxes[boxmin.value],
+                    max:maxBoxes[boxmin.value][boxmax.value],
+                    cost:cost,
+                    admin:adminId
+                }
+            })
         })
+        newCostDiv.className='answer';
+        newCostDiv.setAttribute('placeholder', '$0.00');
     }else{
         console.log('NO MONEY')
-        newCostDiv.innerHTML = '';
-        newCostDiv.appendChild(getThePrice('Enter in amount'));
+        newCostDiv.className='warning answer';
+        newCostDiv.setAttribute('placeholder', 'Enter In An Amount');
     }
+    setTimeout(function(){ printAllGames(adminId) }, 500);
 }
-

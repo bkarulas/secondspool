@@ -4,7 +4,15 @@ section{
     margin: 10px auto 20px auto;
 }
 
-.secsubtitle, .singleGame{
+.sectitle{
+    margin-top: 30px;
+    font-size: 1.5rem;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 4px;
+}
+
+.secsubtitle, .singleGame, .editgameinfo, .editplayerinfo{
     display: flex;
     flex-wrap: wrap;
 }
@@ -15,12 +23,28 @@ section{
 }
 
 .colsm{
-    flex: 0 0 8.25%;
-    max-width: 8.25%;
+    flex: 0 0 8%;
+    max-width: 8%;
 }
 .colmd{
-flex: 0 0 16.75%;
-max-width: 16.75%;
+    flex: 0 0 13%;
+    max-width: 13%;
+}
+.collg{
+    flex: 0 0 20%;
+    max-width: 20%;
+}
+.colxl{
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+.colhf{
+    flex: 0 0 50%;
+    max-width: 50%
+}
+.colmx{
+    flex: 0 0 100%;
+    max-width: 100%
 }
 
 
@@ -33,7 +57,26 @@ max-width: 16.75%;
     font-size: 1.25rem;
 }
 
-.questiontitle, .questionanswer{
+.questiontitle{
     flex: 0 0 40%;
     max-width: 40%;
+}
+
+.warning{
+    background-color: #ffffe0;
+}
+.req{
+    font-size: 1.25rem;
+    color: #ff0000;
+    font-weight: 700;
+}
+
+.instrunctions{
+    padding: 0px;
+    margin-left: 50px;
+    font-size: .6rem;
+}
+
+.instrunctions .req{
+    font-size: .8rem;
 }

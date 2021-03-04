@@ -3,16 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NHL Stock Market</title>
+    <title>Hockey Seconds</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel='stylesheet' href="./assets/css/nav.css">
+    <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 <body>
-    <section id='title'>
-        <div class='maintitle'>
-            <h1>NHL STOCK MARKET</h1>
+    <nav class="topnav" id="myTopnav">
+        <div>
+            <a href='#home'>HOME</a>
+            <a href='#login'>LOGIN</a>
+            <a href='#howitworks'>HOW IT WORKS</a>
+            <a href='#howtoplay'>HOW TO PLAY</a>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" id="myMenuFunction">&#9776;</a>
+        </div>
+    </nav>
+    <section id='home'>
+        <img src="./assets/images/hky_bannerv4.jpg">
+    </section>
+    <section id="login">
+        <div id='mainlogin'>
+            <form>
+                <div class=logintitle>LOGIN</div>
+                <div class='inputline'>
+                    <div class='loginsubtitle'>Email: </div>
+                    <input class='logintext' type="text" id='inputemail' required></input>
+                </div>
+                <div class='inputline'>
+                    <div class='loginsubtitle'>Board: </div>
+                    <input class='logintext' type="text" id='inputboard' required></input>
+                </div>
+                <div class='inputline'>
+                    <input id ='submit' type='submit' class='loginsubmit' onclick="enterPool()"></button>
+                </div>
+                <div id='usermessage'></div>
+            </form>
         </div>
     </section>
+    <section id='howitworks'>
+        <div class='mainsection'>
+            <div class='secmaintitle'>How Hockey Squares Work</div>
+            <div class='sectitle'>The Board</div>
+            <ul class='info'>
+                <li>The board has exactly 60 squares labeled from 00 to 59 that represents the seconds on the clock.</li>
+            </ul>
+            <div class='sectitle'>Types of Games</div>
+            <ul>
+                <li class='secsubtitle'>First/Last - One Team</li>
+                    <ul class='subinfo'>
+                        <li>The pot is divided between time of the first goal scored and the time of the last goal scored by the team selected.</li>
+                        <li>The percentage of the pot for each winner is set by the pool administrator.</li>
+                        <li>If only 1 goal is scored, the player with the matching square wins the total pot.</li>
+                        <li>If no goals are scored by the team selected then the goals scored by the opposing team are used.</li>
+                    </ul>
+                <li class='secsubtitle'>First/Last - Both Teams</li>
+                    <ul class='subinfo'>
+                        <li>The pot is divided between time of the first goal scored and the time of the last goal scored of the game.</li>
+                        <li>The percentage of the pot for each winner is set by the pool administrator.</li>
+                        <li>If only 1 goal is scored, the player with the matching square wins the total pot.</li>
+                    </ul>
+                <li class='secsubtitle'>All Goals - One Team</li>
+                    <ul class='subinfo'>
+                        <li>The pot is divided evenly between all goals scored by the team selected.</li>
+                        <li>If no goals are scored by the team selected then the goals scored by the opposing team are used.</li>
+                    </ul>
+                <li class='secsubtitle'>All Goals - Both Teams</li>
+                    <ul class='subinfo'>
+                        <li>The pot is divided evenly between all goals scored in the game.</li>
+                    </ul>
+                <li class='secsubtitle'>Game Winner</li>
+                    <ul class='subinfo'>
+                        <li>The full pot goes to game winning goal</li>
+                    </ul>
+            </ul>
+            <div class='sectitle'>Winning Square</div>
+            <ul class='info'>
+                <li>Depending of the type of game the winning square is determined by the second on the clock with the time remaining when a goal is scored.</li>
+            </ul>
+        </div>
+    </section>
+    <section id='howtoplay'>
+        <div class='mainsection'>
+            <div class='secmaintitle'>How To Play</div>
+            <div class='sectitle'>Login</div>
+            <ul class='info'>
+                <li>At the top of the home page login with your email address that was used by the administer and the board number that you want to participate in.</li>
+            </ul>
+            <div class='sectitle'>Game Info</div>
+            <ul class='infopoint'>
+                <li>At the top of the screen, you will find all the information regarding the game.</li>
+                <ul class="subinfo">
+                    <li>The teams that are playing.</li>
+                    <li>The date and time of the hockey game.</li>
+                    <li>The type games.</li>
+                    <li>The minimum number of boxes you have to choose and the maximum number of boxes you can choose.</li>
+                    <li>The cost of the boxes chosen</li>
+                </ul>
+                <li>Under the game information is your information, here you will find</li>
+                <ul class="subinfo">
+                    <li>The number of boxes you still have to choose before committing your selection.</li>
+                    <li>And the number of boxes you have already committed to.</li>
+                </ul>
+            </ul>
+            <div class='sectitle'>The Board</div>
+            <ul class='infopoint'>
+                <li>Selecting a box is as easy as just clicking on it. You are only able to click on boxes that have not been selected.</li>
+                <li>Only once you have selected the minimum about of boxes for that particular game you are able to clin on the Enter Picks button at the bottom of the screen.</li>
+                <li>If you have selected a box at the same time as another user, the user that committed the box first will get it and you will receive an error message telling you that the box has already been selected. If this happens then non of you selected boxes will be committed and you will have to choose again.</li>
+                <li>Once you have committed all your boxes, your name will appear in the box.</li>
+            </ul>
+        </div>
+    </section>
+    <section id='footer'>
+        <div class='mainsection'>
+            Hockey by Seconds &#169; 2021
+        </div>
+    </section>
+    <script src='./assets/js/nav.js'></script>
+    <script src='./assets/js/script.js'></script>
+    <script src='./assets/js/index.js'></script>
 </body>
 </html>

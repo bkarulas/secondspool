@@ -1,42 +1,134 @@
+body{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
 section{
-    width: 90%;
+    width: 98%;
     margin: 10px auto 20px auto;
 }
 
-.sectitle{
-    margin-top: 30px;
-    font-size: 1.5rem;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 4px;
+#games, #players{
+    width: 80%;
+    border: 2px solid #25274d;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
-.secsubtitle, .singleGame, .editgameinfo, .editplayerinfo{
+.secmaintitle{
+    background-color: #25274d;
+    color: #ff0000;
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 2px 0px 2px 10px;
+}
+
+.sectitle{
+    background-color: #e0d8d8;
+    color: #25274d;
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 1px 0px 1px 7px;
+}
+.secsubtitle{
+    background-color: #25274d;
+    color: #eeeeee;
+    font-size: 1.2rem;
+    padding: 1px 0px 5px 2px;
+}
+
+.sectioninfo{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: .9rem;
+}
+
+.infoset{
+    width:77%;
+    padding-top: 5px;
+}
+.buttonset{width:23%;}
+
+/* EDIT  SECTION*/
+.edit .infoset{width: 100%;}
+.edit .buttonset{
+    width: 20%;
+    margin: 12px auto 6px auto;
+}
+.edit .secsubtitle{font-size: 1.4rem;}
+.edit .sectioninfo{
+    font-size: 1.2rem;
+    background-color: #eeeeee;
+    padding: 6px 0px 12px 0px;
+}
+#editboxtype, #editboxmin, #editboxmax, #editprice{font-size: 1.1rem;}
+#editfirst, #editlast, #editalias, #editemail, #editphone{
+    font-size: 1rem;
+    width: 90%;
+    border: 2px solid #25274d
+}
+.edit .buttonset button{
+    font-size: .95rem;
+    margin: auto;
+    width: 40%;
+}
+
+#allplayer .buttonset button{
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+
+.center{text-align: center;}
+
+.optionlight{background-color: #eeeeee;}
+.optiondark{background-color: #e0d8d8;}
+
+.singleGame{padding-top: 2px;}
+
+.secsubtitle, .singleGame, .editgameinfo, .editplayerinfo, .infoset, .buttonset{
     display: flex;
     flex-wrap: wrap;
+}
+
+button{
+    background-color: #25274d;
+    color: #eeeeee;
+    padding: 4px 0px 4px 0px;
+    margin: 2px 4px 2px 4px;
+    text-align: center;
+    border-radius: 3px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: .90rem;
+}
+
+.newobjectbtn{
+    padding: 4px 10px 4px 10px;
+    margin: 20px auto 20px auto;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ff0000;
 }
 
 .colxs{
     flex: 0 0 5%;
     max-width: 5%;
+    text-align: center;
 }
 
 .colsm{
     flex: 0 0 8%;
     max-width: 8%;
+    text-align: center;
 }
 .colmd{
-    flex: 0 0 13%;
-    max-width: 13%;
+    flex: 0 0 15%;
+    max-width: 15%;
 }
 .collg{
     flex: 0 0 20%;
     max-width: 20%;
 }
 .colxl{
-    flex: 0 0 30%;
-    max-width: 30%;
+    flex: 0 0 25%;
+    max-width: 25%;
 }
 .colhf{
     flex: 0 0 50%;
@@ -56,7 +148,6 @@ section{
     margin-bottom: 7px;
     font-size: 1.25rem;
 }
-
 .questiontitle{
     flex: 0 0 40%;
     max-width: 40%;
@@ -70,13 +161,165 @@ section{
     color: #ff0000;
     font-weight: 700;
 }
-
 .instrunctions{
     padding: 0px;
-    margin-left: 50px;
     font-size: .6rem;
 }
+.instrunctions .req{font-size: .8rem;}
 
-.instrunctions .req{
-    font-size: .8rem;
+#createnewgame button, #createnewplayer button{padding: 5px 12px 5px 12px;}
+.createbuttons{text-align: center;}
+
+/*MEDIA*/
+@media screen and (max-width: 1600px){
+    #games, #players{width: 85%;}
+    .buttonset button{font-size: .75rem;}
+    .sectioninfo{font-size: .85rem;}
+    .secsubtitle{font-size: 1.1rem;}
+    .edit .sectioninfo {font-size: 1.1rem;}
+    .edit .buttonset button{font-size: .9rem;}
+
+}
+@media screen and (max-width: 1200px){
+    #games, #players{width: 90%;}
+    .sectioninfo{font-size: .8rem;}
+    .buttonset button{font-size: .7rem;}
+    .edit .sectioninfo {font-size: 1rem;}
+    #editboxtype, #editboxmin, #editboxmax, #editprice{font-size: .9rem;}
+    #editfirst, #editlast, #editalias, #editemail, #editphone{font-size: .9rem;}
+    .edit .buttonset button{font-size: .9rem;}
+}
+
+@media screen and (max-width: 1024px){
+    .secmaintitle{
+        font-size: 1.6rem;
+        padding-left: 5px;
+    }
+    .sectitle{
+        font-size: 1.3rem;
+        padding-left: 4px;
+    }
+    .secsubtitle{font-size: 1rem;}
+    .sectioninfo{font-size: .7rem;}
+    .newobjectbtn{font-size: 1.1rem;}
+    .buttonset button{font-size: .6rem;}
+    .edit .secsubtitle {font-size: 1.1rem;}
+    .edit .sectioninfo {font-size: .9rem;}
+    #editboxtype, #editboxmin, #editboxmax, #editprice{font-size: .8rem;}
+    #editfirst, #editlast, #editalias, #editemail, #editphone{
+        font-size: .8rem;
+        border-width: 1px;
+    }
+    .edit .buttonset button{font-size: .7rem;}
+    .question{font-size: 1.1rem;}
+}
+
+@media screen and (max-width: 900px){
+    #games, #players{width: 94%;}
+    .secsubtitle{font-size: 1.1rem;}
+    .sectioninfo{font-size: .75rem;}
+    #viewallgames .infoset{
+        width:100%;
+        margin:5px auto 5px auto;
+    }
+    #viewallgames .buttonset{
+        width:60%;
+        margin:5px auto 10px auto;
+    }
+    #viewallgames .buttonset button{
+        margin: auto;
+    }
+    #viewallgames .secsubtitle .buttonset{display: none;}
+    #allplayer .infoset{
+        width:85%;
+    }
+    #allplayer .buttonset{
+        width:15%;
+    }
+    .edit .sectioninfo {font-size: .8rem;}
+    #editboxtype, #editboxmin, #editboxmax, #editprice{font-size: .72rem;}
+    #createnewgame .questiontitle {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    .question{font-size: 1rem;}
+    .createbuttons button{font-size: .8rem;}
+}
+
+@media screen and (max-width: 768px){
+    #games, #players{width: 97%;}
+    .secsubtitle{font-size: .9rem;}
+    .sectioninfo{font-size: .68rem;}
+    #allplayer .infoset{
+        width:100%;
+        margin:5px auto 5px auto;
+    }
+    #allplayer .buttonset{
+        width:40%;
+        margin:5px auto 10px auto;
+    }
+    #allplayer .buttonset button{margin: auto;}
+    #allplayer .secsubtitle .buttonset{display: none;}
+    .newobjectbtn{font-size: 1rem;}
+    .mediaview{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .mediaview .secsubtitle{
+        flex: 0 0 30%;
+        max-width: 30%;
+        background-color: #eeeeee;
+        color: #25274d;
+        padding-left: 11%;
+        font-size: 1rem;
+    }
+    .mediaview .sectioninfo{
+        flex: 0 0 59%;
+        max-width: 59%;
+        font-size: 1rem;
+    }
+
+    .mediaview .colsm, .mediaview .colmd, .mediaview .collg, .mediaview .colxl{
+        display: flex;
+        flex-wrap: wrap;
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 3px 0px 3px 0px;
+    }
+    #editboxtype, #editboxmin, #editboxmax, #editprice{font-size: 1rem;}
+    #editplayer .answer{
+        width: 80%;
+    }
+    .edit .buttonset {
+        width: 40%;
+    }
+    #createnewgame .questiontitle {
+        flex: 0 0 45%;
+        max-width: 45%;
+    }
+    .question{font-size: .9rem};
+}
+
+@media screen and (max-width: 600px){
+    #games, #players{width: 99%;}
+    .secsubtitle{font-size: .75rem;}
+    .sectioninfo{font-size: .6rem;}
+    #createnewgame .questiontitle {
+        flex: 0 0 35%;
+        max-width: 35%;
+    }
+    .question{font-size: .8rem};
+}
+
+@media screen and (max-width: 480px){
+    .secsubtitle{font-size: .6rem;}
+    .sectioninfo{font-size: .55rem;}
+    #createnewgame .questiontitle {
+        flex: 0 0 30%;
+        max-width: 30%;
+    }
+}
+
+@media screen and (max-width: 365px){
+    
 }

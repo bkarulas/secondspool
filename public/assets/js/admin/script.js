@@ -1,3 +1,4 @@
+adminId = 1;
 mainUrl = window.location.href;
 baseUrl = mainUrl.substring(0,mainUrl.indexOf('?'));
 
@@ -29,24 +30,15 @@ function getUrlVar(winLocaation, id){
 }
 
 
-let Alert = new CustomAlert;
-
-function CustomAlert(){
-    this.render = function (dialog, title) {
-        let winW = window.innerWidth;
-        let winH = window.innerHeight;
-        let dialogoverlay = document.getElementById('dialogoverlay');
-        let dialogbox = document.getElementById('dialogbox');
-        dialogoverlay.style.display = 'block';
-        dialogoverlay.style.height = winH+'px';
-        dialogbox.style.display = 'block';
-        document.getElementById('dialogboxhead').innerHTML = title;
-        document.getElementById('dialogboxbody').innerHTML = dialog;
-        document.getElementById('dialogboxfoot').innerHTML = '<button onclick="Alert.ok()">OK</button>';
-    }
-    this.ok = function (){
-        document.getElementById('dialogbox').style.display = 'none';
-        document.getElementById('dialogoverlay').style.display = 'none';
-        createTheBoard();
-    }
-}
+minBoxes = [1,2,3,5,6,10,12,20,30]
+maxBoxes = [
+    [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
+    [2,4,6,8,10,12,14,16,18,20,22,24,26,28,30],
+    [3,6,9,12,15,18,21,24,27,30],
+    [5,10,15,20,30],
+    [6,12,18,24,30],
+    [10,20,30],
+    [12,24,36],
+    [20,40],
+    [30]
+]

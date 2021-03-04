@@ -69,6 +69,14 @@ CREATE TABLE `game_type` (
   `about` varchar(255)
 );
 
+CREATE TABLE `picks` (
+	`id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    `sec` int,
+    `user` int,
+    `game` int,
+    `created` datetime DEFAULT CURRENT_TIMESTAMP
+);
+
 ALTER TABLE `schedule` ADD FOREIGN KEY (`home_id`) REFERENCES `nhl_team` (`id`);
 
 ALTER TABLE `schedule` ADD FOREIGN KEY (`vis_id`) REFERENCES `nhl_team` (`id`);
@@ -82,3 +90,8 @@ ALTER TABLE `game` ADD FOREIGN KEY (`type`) REFERENCES `game_type` (`id`);
 ALTER TABLE `goals` ADD FOREIGN KEY (`date`) REFERENCES `schedule` (`id`);
 
 ALTER TABLE `goals` ADD FOREIGN KEY (`team`) REFERENCES `nhl_team` (`id`);
+
+ALTER TABLE `picks` ADD FOREIGN KEY (`user`) REFERENCES `users` (`id`);
+
+ALTER TABLE `picks` ADD FOREIGN KEY (`game`) REFERENCES `game` (`id`);
+

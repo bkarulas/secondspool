@@ -1,6 +1,6 @@
 let allPlayerDiv = document.getElementById('allplayerinfo');
 
-printAllPlayers(adminId)
+
 
 async function printAllPlayers(adminId){
     allPlayerDiv.innerHTML = '';
@@ -10,14 +10,21 @@ async function printAllPlayers(adminId){
         (i%2) ? bgcolor = 'optiondark': bgcolor = 'optionlight';
         let singlePlayerDiv = document.createElement('div');
         singlePlayerDiv.className = `${bgcolor} singleGame` ;
-        singlePlayerDiv.setAttribute('id', `player${allPlayers[i].id}`)
-        singlePlayerDiv.appendChild(printEachCol(allPlayers[i].nameFirst, 'md'));
-        singlePlayerDiv.appendChild(printEachCol(allPlayers[i].nameLast, 'lg'));
-        singlePlayerDiv.appendChild(printEachCol(allPlayers[i].alias, 'lg'));
-        singlePlayerDiv.appendChild(printEachCol(allPlayers[i].email, 'lg'));
-        singlePlayerDiv.appendChild(printEachCol(allPlayers[i].phone, 'md'));
-        singlePlayerDiv.appendChild(createButton('edit', 'Player','xs', allPlayers[i].id));
-        singlePlayerDiv.appendChild(createButton('delete', 'Player','xs', allPlayers[i].id));
+        let infoSet = document.createElement('div');
+        infoSet.className = 'infoset'
+        infoSet.setAttribute('id', `player${allPlayers[i].id}`)
+        infoSet.appendChild(printEachCol(allPlayers[i].id, 'xs'))
+        infoSet.appendChild(printEachCol(allPlayers[i].nameFirst, 'md'));
+        infoSet.appendChild(printEachCol(allPlayers[i].nameLast, 'lg'));
+        infoSet.appendChild(printEachCol(allPlayers[i].alias, 'lg'));
+        infoSet.appendChild(printEachCol(allPlayers[i].email, 'xl'));
+        infoSet.appendChild(printEachCol(allPlayers[i].phone, 'md'));
+        singlePlayerDiv.appendChild(infoSet);
+        let buttonSet = document.createElement('div')
+        buttonSet.className='buttonset';
+        buttonSet.appendChild(createButton('edit', 'Player','xl', allPlayers[i].id));
+        buttonSet.appendChild(createButton('delete', 'Player','xl', allPlayers[i].id));
+        singlePlayerDiv.appendChild(buttonSet);
         allPlayerDiv.appendChild(singlePlayerDiv);
     }
 }
@@ -33,16 +40,21 @@ async function getAllPlayers(adminId){
 
 
 async function buttonPlayerEdit(id){
+    showThisSection('e', 'Player');
     let player = await getSinglePlayer(id, adminId);
-    console.log(player[0]);
-    singlePlayerEdit()
+    clearAreaById(['editplayerid','editplayerfirst','editplayerlast','editplayeralias','editplayeremail','editplayerphone'], 'html');
+    document.getElementById('editplayerid').innerText = player[0].id;
     document.getElementById('editplayerfirst').appendChild(singlePlayerEdit('first',player[0].nameFirst))
     document.getElementById('editplayerlast').appendChild(singlePlayerEdit('last',player[0].nameLast))
     document.getElementById('editplayeralias').appendChild(singlePlayerEdit('alias',player[0].alias))
     document.getElementById('editplayeremail').appendChild(singlePlayerEdit('email',player[0].email))
     document.getElementById('editplayerphone').appendChild(singlePlayerEdit('phone',player[0].phone))
-    document.getElementById('editplayersave').appendChild(createButton('save','Player', 'mx', player[0].id));
-    document.getElementById('editplayercancle')
+    let editSaveBtn = document.getElementById('editplayersave')
+    editSaveBtn.setAttribute('onclick',`buttonPlayerSave(${player[0].id})`);
+    editSaveBtn.innerText='SAVE';
+    let editCancleBtn = document.getElementById('editplayercancle')
+    editCancleBtn.setAttribute('onclick',`adminStartPage(${adminId})`);
+    editCancleBtn.innerText='CANCLE';
 }
 
 async function buttonPlayerDelete(id){
@@ -50,8 +62,9 @@ async function buttonPlayerDelete(id){
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({id:id})
-    });   
-    setTimeout(function(){ printAllPlayers(adminId) }, 500);
+    });
+    setTimeout(function(){ adminStartPage(adminId) }, 500);
+    //setTimeout(function(){ printAllPlayers(adminId) }, 500);
 }
 
 async function getSinglePlayer(id, admin){
@@ -67,6 +80,7 @@ async function getSinglePlayer(id, admin){
 });
 return res.json();
 }
+
 
 function singlePlayerEdit(value, sel){
     let editValue = document.createElement('input');
@@ -106,7 +120,8 @@ function buttonPlayerSave(id){
         goOn=false;
         editFirstDiv.className = 'answer';
         editEmailDiv.className = 'answer';
-        setTimeout(function(){ printAllPlayers(adminId) }, 500);
+        //setTimeout(function(){ printAllPlayers(adminId) }, 500);
+        setTimeout(function(){ adminStartPage(adminId) }, 500);
     }else{
         if (firstName=='') {
             editFirstDiv.setAttribute('placeholder','Enter A Name')

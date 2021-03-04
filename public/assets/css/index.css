@@ -1,0 +1,228 @@
+body{
+    background-color: #ffffff;;
+    padding: 0px;
+    margin: 0px;
+}
+
+#login{
+    padding: 10px 0px 50px 0px;
+    /* background-image: url(../images/scoreboard01.jpg);
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; */
+    margin: auto;
+}
+
+#howitworks, #howtoplay{
+    padding: 60px 0px 50px 0px;
+    margin-bottom: 25px;
+}
+
+.maintitle{
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.inputline{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px auto 15px auto;
+    width: 75%;
+}
+
+#mainlogin{
+    width: 24%;
+    margin: auto;
+    opacity: 1;
+}
+
+.logintitle{
+    width: 100%;
+    background-color: #25274d;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ff0000;
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 7px;
+}
+
+
+form{
+    margin-top: 10%;
+    border: 7px solid #25274d;
+    background-color: #e0d8d8;
+    border-radius: 5px;    
+    padding-bottom: 17px;
+    box-shadow: 0px 0px 10px #fff;
+}
+
+#usermessage{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #25274d;
+    text-align: center;
+}
+
+.loginsubtitle{
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #25274d;
+}
+
+.logintext{
+    margin-left: 7px;
+    font-size: 1rem;
+}
+
+.logintext{
+    margin: 0px 30px 0px auto;
+}
+
+.loginsubmit{
+    margin: auto;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: #25274d;
+    color: #ff0000;
+    border-radius: 3px;
+}
+
+.missing{background-color: rgb(241, 241, 157);}
+
+/*HOW IT WORKS*/
+
+.mainsection{
+    width: 60%;
+    margin: auto;
+}
+
+#howitworks{
+    background-color: #eeeeee;
+}
+
+.secmaintitle{
+    font-size: 2rem;
+    font-weight: 700;
+    color: #25274d;
+}
+.sectitle{
+    background-color: #25274d;
+    color: #ff0000;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 3px;
+    padding: 0px 0px 3px 7px;
+    margin: 17px auto 6px auto;
+}
+.secsubtitle{
+    font-size: 1.3rem;
+    font-weight: 500;
+    list-style-type:decimal;
+}
+.info{
+    font-size: 1.3rem;
+    list-style-type: none;
+}
+.infopoint{
+    font-size: 1.4rem;
+}
+.subinfo{
+    font-size: 1.1rem;
+    list-style-type:square;
+}
+
+#footer{
+    background-color: #25274d;
+    padding: 10px 0px 10px 0px;
+    margin: 0px;
+}
+
+#footer .mainsection{
+    text-align: center;
+    font-size: 1.3rem;
+    color: #ff0000;
+}
+
+/*MEDIA*/
+@media screen and (max-width: 1600px){
+    #mainlogin{width: 32%;}
+    .mainsection{width:70%}
+
+}
+
+@media screen and (max-width: 1200px){
+    #mainlogin{width: 43%;}
+    .mainsection{width:80%}
+}
+
+@media screen and (max-width: 900px){
+    #mainlogin{width: 50%;}
+}
+
+@media screen and (max-width: 768px){
+    section{
+        padding: 60px 0px 30px 0px;
+        margin-bottom: 17px;
+    }
+    .logintitle{
+        font-size: 1.3rem;
+        margin-bottom: 17px;
+        padding-bottom: 5px;
+    }
+    .inputline{width: 85%;}
+    .loginsubtitle{font-size: 1.1rem;}
+    .logintext{
+        width: 70%;
+        font-size: 1rem;
+        margin: 0px 10px 0px auto;
+    }
+    form{
+        padding-bottom: 7px;
+        border-width: 4px;
+    }
+    .mainsection{width:85%}
+    .secmaintitle{font-size: 1.8rem;}
+    .sectitle{font-size: 1.3rem;}
+    .info, .infopoint, .secsubtitle{font-size: 1.1rem;}
+    .subinfo{font-size: 1rem;}
+    #footer .mainsection {font-size: 1.1rem};
+}
+
+@media screen and (max-width: 600px){
+    #mainlogin{width: 75%;}
+    .logintext{
+        width: 75%;
+    }
+    .mainsection{width:90%}
+    .secmaintitle{font-size: 1.6rem;}
+    .sectitle{font-size: 1.1rem;}
+    .secsubtitle{font-size: 1rem;}
+    .info, .infopoint{font-size: .9rem;}
+    .subinfo{font-size: .80rem;}
+    #footer .mainsection {font-size: 1rem};
+}
+
+@media screen and (max-width: 480px){
+    #mainlogin{width: 90%;}
+    .logintext{width: 75%;}
+    .loginsubtitle{font-size: 1rem;}
+    .logintext{font-size: .9rem;}
+    .loginsubmit{font-size: 1.1rem;}
+}
+
+@media screen and (max-width: 365px){
+    #mainlogin, .mainsection{width: 98%;}
+    .logintext{width: 70%;}
+    .loginsubtitle{font-size: .9rem;}
+    .logintext{font-size: .8rem;}
+    .loginsubmit{font-size: 1.1rem;}
+    .secmaintitle{font-size: 1.4rem;}
+    .sectitle{font-size: 1rem;}
+    .secsubtitle{font-size: .9rem;}
+    .info, .infopoint{font-size: .75rem;}
+    .subinfo{font-size: .65rem;}
+    #footer .mainsection {font-size: .8rem};
+}

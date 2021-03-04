@@ -1,3 +1,12 @@
+
+
+function newPlayerButton(){
+    clearAreaById(['newfirstname','newlastname','newusername','newemail','newphone'], 'value');
+    document.getElementById('newplayerbutton').style.display='none';
+    showThisSection('c', 'Player');
+    document.getElementById('newplayercanclebtn').setAttribute('onclick', `adminStartPage(${adminId})`)
+}
+
 function createNewUser(){
     let newFirstNameDiv = document.getElementById('newfirstname');
     let newEmailDiv = document.getElementById('newemail');
@@ -22,7 +31,7 @@ function createNewUser(){
         goOn=false;
         newFirstNameDiv.className = 'answer';
         newEmailDiv.className = 'answer';
-        setTimeout(function(){ printAllPlayers(adminId) }, 500);
+        setTimeout(function(){ adminStartPage(adminId) }, 500);
     }else{
         if (firstName=='') {
             newFirstNameDiv.setAttribute('placeholder','Enter A Name')

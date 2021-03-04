@@ -6,6 +6,7 @@
 // =============================================================
 const express = require("express");
 const apiRoutes = require("./routes/api-routes");
+const apiNHL = require("./routes/api-nhl");
 
 // Sets up the Express App
 // =============================================================
@@ -25,6 +26,7 @@ app.use(express.static("./public"));
 //require("./routes/api-routes.js")(app);
 require("./routes/html-routes")(app)
 app.use("/api", apiRoutes);
+//app.use("/api/nhl", apiNHL);
 
 // Starts the server to begin listening
 // =============================================================

@@ -1,11 +1,17 @@
-let newgameSec = document.getElementById('createnewgame');
-let newScheduleDiv = document.getElementById('newschedule');
-let newTypeDiv = document.getElementById('newtype');
-let newMinDiv = document.getElementById('newmin');
-let newCostDiv = document.getElementById('newcost');
-let newMaxDiv = document.getElementById('newmax');
+const newgameSec = document.getElementById('createnewgame');
+const newScheduleDiv = document.getElementById('newschedule');
+const newTypeDiv = document.getElementById('newtype');
+const newMinDiv = document.getElementById('newmin');
+const newCostDiv = document.getElementById('newcost');
+const newMaxDiv = document.getElementById('newmax');
 
-printNewGameOptions();
+function newGameButton(){
+    clearAreaById(['newschedule','newtype', 'newmin'], 'child');
+    document.getElementById('newgamebutton').style.display='none';
+    showThisSection('c', 'Game');
+    printNewGameOptions()
+    document.getElementById('newgamecanclebtn').setAttribute('onclick', `adminStartPage(${adminId})`);
+}
 
 //all the game options to build a new game
 async function printNewGameOptions(){
@@ -136,5 +142,5 @@ function createNewGame(){
         newCostDiv.className='warning answer';
         newCostDiv.setAttribute('placeholder', 'Enter In An Amount');
     }
-    setTimeout(function(){ printAllGames(adminId) }, 500);
+    setTimeout(function(){ adminStartPage(adminId) }, 500);
 }

@@ -6,18 +6,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>60 Pool - Board</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Rubik:ital@1&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/board.css">
+    <link rel='stylesheet' href="./assets/css/nav.css">
 </head>
 <body>
-    <section id='header'>
-        <h1>The Board</h1>
+    <nav class="topnav" id="myTopnav">
+        <div>
+            <a href='#home'>HOME</a>
+            <a href='#login'>LOGIN</a>
+            <a href='#howitworks'>HOW IT WORKS</a>
+            <a href='#howtoplay'>HOW TO PLAY</a>
+            <a href="javascript:void(0);" style="font-size:15px;" class="icon" id="myMenuFunction">&#9776;</a>
+        </div>
+    </nav>
+    <section id='home'>
+        <img src="./assets/images/hky_bannerv4.jpg">
+    </section>
+    <section id='alertBox'>
+        <div id='dialogoverlay'></div>
+        <div id='dialogbox'>
+            <div>
+                <div id='dialogboxhead'></div>
+                <div id='dialogboxbody'></div>
+                <div id='dialogboxfoot'></div>
+            </div>
+        </div>
     </section>
     <section id='theboard'>
-        <div id='boardteam' class='row'>
-            <h2>The Toronto Maple Leafs</h2>
+        <div id='infoblock'>
+            <div class='title'>
+                <div class='secinfo'>Game</div> 
+                <div class='secinfo sm'>Date Time</div>
+                <div class='secinfo'>Type</div>
+                <div class='secinfo sm'>Amount</div>
+                <div class='secinfo sm'>Cost</div>
+            </div>
+            <div class='info'>
+                <div class='smtitle'>Game</div>
+                <div class='smtitle'>Date Time</div>
+                <div class='secinfo' id='infogame'>TEST</div>
+                <div class='secinfo md' id='infodatetime'>TEST</div>
+                <div class='smtitle'>Type</div>
+                <div class='smtitle sm'>Amount</div>
+                <div class='smtitle sm'>Cost</div>
+                <div class='secinfo' id='infotype'>TEST</div>
+                <div class='secinfo sm' id='infominmax'>TEST</div>
+                <div class='secinfo sm' id='infocost'>TEST</div>
+            </div>
+        </div>
+        <div id='messageblock'>
+            <div id='messageselected'></div>
+            <div id='messagetaken'></div>
         </div>
         <div id='fullblock'></div>
+        <div id='boardbuttons'>
+            <button id='clearcurrentpicks' name='clearcurrentpicks' onclick="createTheBoard()">Clear Picks</button>
+            <button id='submitcurrentpicks' name='submitcurrentpicks' onclick="enterThesePicks()">Enter Picks</button>
+        </div>
     </section>
-    <script src="./assets/js/boardlayout.js"></script>
+    <script src='./assets/js/script.js'></script>
+    <script src="./assets/js/board/boardpicks.js"></script>
+    <script src="./assets/js/board/boardlayout.js"></script>
+    <script src="./assets/js/board/boardinfo.js"></script>
+    
+    
+    
+
 </body>
 </html>

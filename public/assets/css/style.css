@@ -1,56 +1,56 @@
-/*MAIN PAGE*/
-body{
-    width: 80%;
-    margin: auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+#home img{
+    width: 100%;
+    margin: 0px;
+    padding: 60px 0px 10px 0px;
+    background:#25274d;
 }
 
-/*ROWS*/
-.headers, .maininfo, .teamstattitle, .teamstatinfo{
-    display: flex;
-    flex-wrap: wrap;
+#dialogoverlay{
+    display: none;
+    opacity: .8;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background: #e9e9e9;
+    width: 100%;
+    z-index: 10;
 }
-
-/*Titles*/
-.headers{
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-top: 12px;
-    margin-bottom: 7px;
+#dialogbox{
+    display: none;
+    position: fixed;
+    background: #25274d;
+    border-radius: 7px;
+    width: 40%;
+    top: 100px;
+    left: 30%;
+    z-index: 10;
 }
-
-/*FULL TEAM - all informtion*/
-.headers,.eachteam{
-    margin: 4px auto 1px auto;
-    width: 60%;
-    border: 2px solid #a4a4a4;
-    border-radius: 5px;
+#dialogbox div{
+    background: #aaabb8;
+    margin: 8px;
 }
-
-/*TEAM NAME AND VALUE*/
-.maininfo{
-    font-size:1.40rem;
+#dialogbox div #dialogboxhead{
+    background: #aaabb8;
+    font-size: 2rem;
+    padding: 10px;
+    color: #25274d;
 }
-.headersTeam, .headersValue, .teamname, .teamvalue{
-    flex: 0 0 33.3333%;
-    max-width: 33.33333%;
-    padding-left: 2%;
-}
-
-/*TEAM STATS*/
-.subinfo{
-    width: 96%;
-    margin: 1px auto 3px auto;
-    font-size: 1rem;
-}
-.teamstattitle{
-    background-color: #4A4A4A;
-    color: #ffffff;
-    border-radius: 3px;
-}
-
-.stat{
-    flex: 0 0 8.333333%;
-    max-width: 8.333333%;
+#dialogbox div #dialogboxbody{
+    background: #25274d;
+    padding: 20px;
+    color: #feffff;
+    border-radius: 7px;
+    font-size: 1.3rem;
     text-align: center;
+}
+#dialogbox div #dialogboxfoot{
+    background: #aaabb8;
+    padding:10px;
+    text-align: right;
+}
+#dialogbox div #dialogboxfoot button {
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 7px;
+    padding: 2px 30px 5px 30px;
 }

@@ -1,3 +1,14 @@
+const allGamesSec = document.getElementById('viewallgames');
+const editGameSec = document.getElementById('editgame');
+const creatGameSec = document.getElementById('createnewgame');
+const allPlayerSec = document.getElementById('allplayer');
+const editPlayerSec = document.getElementById('editplayer');
+const creatPlayerSec = document.getElementById('createnewplayer');
+const GameSec = document.getElementById('games');
+const PlayerSec = document.getElementById('players');
+const newPlayerBtn = document.getElementById('newplayerbutton');
+const newGameBtn = document.getElementById('newgamebutton');
+
 //GENERAL PRINT OPTIONS
 //prints each game info coloum
 function printEachCol(info, width){
@@ -17,3 +28,18 @@ function createButton(info, sec, width, id){
     buttonCol.innerText = info.toUpperCase();
     return buttonCol;
 }
+
+function clearAreaById(allId, part){
+    allId.forEach(id => {
+        let currentID = document.getElementById(id)
+        if (part=='html'){
+            currentID.innerHTML='';
+        }else if (part=='value'){
+            currentID.value='';
+        }else if (part=='child'){
+            currentID.removeChild(currentID.lastChild);
+        }
+    });
+}
+
+

@@ -121,7 +121,7 @@ function createNewGame(){
     cost = parseInt(newcost.value)//.substring(0, price.value.indexOf('.'))).replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
     if (cost>0){
         console.log('COST IS GOOD');
-        fetch("api/game/create",{
+        fetch("/api/game/create",{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

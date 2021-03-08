@@ -1,8 +1,12 @@
-#home img{
+#home img, #homesm img, #homexs img{
     width: 100%;
     margin: 0px;
     padding: 60px 0px 10px 0px;
     background:#25274d;
+}
+
+#homesm, #homexs{
+    display: none;
 }
 
 #dialogoverlay{
@@ -54,3 +58,97 @@
     border-radius: 7px;
     padding: 2px 30px 5px 30px;
 }
+
+
+/*MEDIA*/
+@media screen and (max-width: 1600px){
+    #home{display: block;}
+    #homesm{display:none;}
+    #homexs{display: none;}
+}
+
+@media screen and (max-width: 1200px){
+    #home{display: block;}
+    #homesm{display:none;}
+    #homexs{display: none;}
+    #dialogbox {
+        width: 60%;
+        left: 20%;
+    }
+    #dialogbox div #dialogboxhead {font-size: 1.7rem;}
+    #dialogbox div #dialogboxbody {
+        padding: 15px;
+        font-size: 1.2rem;
+    }
+    #dialogbox div #dialogboxfoot {padding: 7px;}
+    #dialogbox div #dialogboxfoot button {
+        font-size: 1.1rem;
+        padding: 2px 25px 5px 25px;
+    }
+
+    
+}
+
+@media screen and (max-width: 900px){
+    #home{display: none;}
+    #homesm{display: block;}
+    #homexs{display: none;}
+}
+
+@media screen and (max-width: 768px){
+    #home{display: none;}
+    #homesm{display: block;}
+    #homexs{display: none;}
+    #dialogbox {
+        width: 70%;
+        left: 15%;
+    }
+    #dialogbox div #dialogboxhead {font-size: 1.5rem;}
+    #dialogbox div #dialogboxbody {
+        padding: 10px;
+        font-size: 1.1rem;
+    }
+    #dialogbox div #dialogboxfoot button {font-size: 1.1rem;}
+}
+
+@media screen and (max-width: 600px){
+    #home{display: none;}
+    #homesm{display:none;}
+    #homexs{display: block;}
+    #dialogbox {
+        width: 80%;
+        left: 10%;
+    }
+    #dialogbox div #dialogboxhead {
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+    #dialogbox div #dialogboxbody {font-size: 1rem;}
+    #dialogbox div #dialogboxfoot button {font-size: 1rem;}
+}
+
+@media screen and (max-width: 480px){
+    #home{display: none;}
+    #homesm{display:none;}
+    #homexs{display: block;}
+    #dialogbox {
+        width: 90%;
+        left: 5%;
+    }
+}
+
+@media screen and (max-width: 365px){
+    #home{display: none;}
+    #homesm{display:none;}
+    #homexs{display: block;}
+
+    #mainlogin{width: 100%;}
+    .logintext{width: 95%;}
+    .loginsubtitle{font-size: 1rem;}
+    .logintext{font-size: .9rem;}
+    .loginsubmit{font-size: 1.1rem;}
+    #footer .mainsection {font-size: .8rem};
+
+    #dialogbox div #dialogboxbody {font-size: .9rem;}
+}
+

@@ -7,10 +7,13 @@
     <title>Admin</title>
     <script  src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/admin.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
+    <section id='home'>
+        <img src="../assets/images/hky_bannerv4.jpg">
+    </section>
 <!--GAMES-->
     <section id='games'>
         <div class='secmaintitle'>YOUR GAMES</div>
@@ -18,7 +21,7 @@
         <section id='viewallgames'>
             <div class='sectitle'>All Games</div>
             <div class='secsubtitle'>
-                <div class='infoset'>
+                <div class='gameset'>
                     <div class='colxs'>ID</div>
                     <div class='colmd'>DATE</div>
                     <div class='colxl'>GAME</div>
@@ -101,8 +104,7 @@
         <section id='allplayer'>
             <div class='sectitle'>All Players</div>
             <div class='secsubtitle'>
-                <div class='infoset'>
-                    <div class='colxs'>ID</div>
+                <div class='playerset'>
                     <div class='colmd'>First Name</div>
                     <div class='collg'>Last Name</div>
                     <div class='collg'>Username</div>
@@ -119,7 +121,6 @@
             <div class='mediaview'>
                 <div class='secsubtitle'>
                     <div class='infoset'>
-                        <div class='colxs'>ID</div>
                         <div class='colmd'>First Name</div>
                         <div class='collg'>Last Name</div>
                         <div class='collg'>Username</div>
@@ -129,8 +130,7 @@
                 </div>
                 <div class='sectioninfo editplayerinfo'>
                     <div class='infoset'>
-                        <div class='colxs' id='editplayerid'></div>
-                        <div class='colmd' id='editplayerfirst'></div>
+                        <div class='colmd first' id='editplayerfirst'></div>
                         <div class='collg' id='editplayerlast'></div>
                         <div class='collg' id='editplayeralias'></div>
                         <div class='colxl' id='editplayeremail'></div>
@@ -161,7 +161,7 @@
                 </div>
                 <div class='question'>
                     <div class='questiontitle'>Email Address</div>
-                    <input type="text" class='answer' id='newemail' required><span class='req'>*</span></input>
+                    <input type="email" class='answer' id='newemail' required><span class='req'>*</span></input>
                 </div>
                 <div class='question'>
                     <div class='questiontitle'>Phone Number</div>
@@ -177,13 +177,13 @@
         <button class='newobjectbtn' id='newplayerbutton' onclick='newPlayerButton()'>NEW PLAYER</button>
     </section>
     <!--SCRIPTS-->
-    <script src="./assets/js/admin/script.js"></script>
-    <script src="./assets/js/admin/admin.js"></script>
-    <script src="./assets/js/admin/newgame.js"></script>
-    <script src="./assets/js/admin/allgame.js"></script>
-    <script src="./assets/js/admin/newplayer.js"></script>
-    <script src="./assets/js/admin/allplayers.js"></script>
-    <script src ="./assets/js/admin/adminview.js"></script>
+    <script src="../assets/js/admin/script.js"></script>
+    <script src="../assets/js/admin/admin.js"></script>
+    <script src="../assets/js/admin/newgame.js"></script>
+    <script src="../assets/js/admin/allgame.js"></script>
+    <script src="../assets/js/admin/newplayer.js"></script>
+    <script src="../assets/js/admin/allplayers.js"></script>
+    <script src ="../assets/js/admin/adminview.js"></script>
 
 </body>
 </html>

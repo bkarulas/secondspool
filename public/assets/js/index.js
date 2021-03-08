@@ -40,7 +40,6 @@ async function enterPool(){
         }
     }else{
         let userId = await getUserId(userEmail, userBoard);
-        console.log(userId.length);
         if (userId.length>0){
             console.log('USER')
             console.log (userId[0]);

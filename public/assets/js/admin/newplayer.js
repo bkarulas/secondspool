@@ -14,7 +14,7 @@ function createNewUser(){
     let email = newemail.value;
     let goOn = (firstName!='' && email!='')? true: false;
     if (goOn){
-        fetch("api/player/create",{
+        fetch("/api/player/create",{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -31,7 +31,7 @@ function createNewUser(){
         goOn=false;
         newFirstNameDiv.className = 'answer';
         newEmailDiv.className = 'answer';
-        setTimeout(function(){ adminStartPage(adminId) }, 500);
+        setTimeout(function(){ adminStartPage() }, 500);
     }else{
         if (firstName=='') {
             newFirstNameDiv.setAttribute('placeholder','Enter A Name')

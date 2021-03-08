@@ -6,8 +6,9 @@ class Player {
 	}
 
 	//create a new player
-	async createPlayer(firstName, lastName, alias, email, phone, admin){
-		let query = `INSERT INTO users (alias, name_first, name_last, email, phone, admin) VALUES ('${alias}', '${firstName}', '${lastName}', '${email}', '${phone}', ${admin});`;
+	async createPlayer(id, firstName, lastName, alias, email, phone, admin){
+		let query = `INSERT INTO users (id, alias, name_first, name_last, email, phone, admin) VALUES ('${id}','${alias}', '${firstName}', '${lastName}', '${email}', '${phone}', '${admin}');`;
+		console.log(query)
 		try {
 			await this.pool.query(query);
 			return 1;
@@ -20,7 +21,8 @@ class Player {
 	async getAllPlayers(id){
 		let query = `SELECT id, alias, name_first AS nameFirst, name_last AS nameLast, email, phone
 		FROM users
-		WHERE admin = ${id} AND act=1;`;
+		WHERE admin = '${id}' AND act=1
+		ORDER BY created;`;
 		try {
 			let result = await this.pool.query(query);
 			return result;
@@ -33,7 +35,7 @@ class Player {
 	async getOnePlayer(id, admin){
 		let query = `SELECT id, alias, name_first AS nameFirst, name_last AS nameLast, email, phone
 		From users
-		WHERE admin = ${admin} AND id = ${id};`
+		WHERE admin = '${admin}' AND id = '${id}';`
 		try {
 			let result = await this.pool.query(query);
 			return result;
@@ -45,9 +47,9 @@ class Player {
 
 	//update a game
 	async updatePlayer(id, firstName, lastName, alias, email, phone, adminId){
-		console.log(`SQL ID: ${id} - ${firstName} ${lastName} - ${alias} - ${phone} - ${email} --> ADMIN: ${adminId}`)
 		let query = `UPDATE users SET name_first='${firstName}', name_last='${lastName}', alias='${alias}', email='${email}', phone='${phone}'
-		WHERE admin = ${adminId} AND id=${id};`;
+		WHERE admin = '${adminId}' AND id='${id}';`;
+		console.log(query);
 		try {
 			await this.pool.query(query);
 			return 1;
@@ -58,7 +60,7 @@ class Player {
 	}
 
 	async deletePlayer(id){
-		let query = `UPDATE users SET act = 0 WHERE id = ${id};`;
+		let query = `UPDATE users SET act = 0 WHERE id = '${id}';`;
 		try {
 			await this.pool.query(query);
 			return 1;

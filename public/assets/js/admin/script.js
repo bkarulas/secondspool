@@ -1,4 +1,3 @@
-adminId = 1;
 mainUrl = window.location.href;
 baseUrl = mainUrl.substring(0,mainUrl.indexOf('?'));
 

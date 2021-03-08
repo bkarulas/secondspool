@@ -36,7 +36,7 @@ class Game {
 
 	//create a new game
 	async createGame(date, type, min, max, cost, adminId){
-		let query = `INSERT INTO game (date, cost, box_min, box_max, type, admin) VALUES (${date}, ${cost}, ${min}, ${max}, ${type}, ${adminId});`;
+		let query = `INSERT INTO game (date, cost, box_min, box_max, type, admin) VALUES (${date}, ${cost}, ${min}, ${max}, ${type}, '${adminId}');`;
 		try {
 			await this.pool.query(query);
 			return 1;
@@ -49,7 +49,7 @@ class Game {
 	//update a game
 	async updateGame(id, type, min, max, cost, adminId){
 		let query = `UPDATE game SET cost=${cost}, box_min=${min}, box_max=${max}, type=${type} 
-		WHERE admin = ${adminId} AND id=${id};`;
+		WHERE admin = '${adminId}' AND id=${id};`;
 		try {
 			await this.pool.query(query);
 			return 1;
@@ -67,7 +67,7 @@ class Game {
 		INNER JOIN game_type t ON t.id = g.type
 		INNER JOIN nhl_team vis ON vis.id = s.vis_id
 		INNER JOIN nhl_team home ON home.id = s.home_id
-		WHERE act = 1 AND admin = ${id};`;
+		WHERE act = 1 AND admin = '${id}';`;
 		try {
 			let result = await this.pool.query(query);
 			return result;
@@ -85,7 +85,7 @@ class Game {
 		INNER JOIN game_type t ON t.id = g.type
 		INNER JOIN nhl_team vis ON vis.id = s.vis_id
 		INNER JOIN nhl_team home ON home.id = s.home_id
-		WHERE admin = ${admin} AND act = 1 AND g.id = ${id};`
+		WHERE admin = '${admin}' AND act = 1 AND g.id = ${id};`
 		try {
 			let result = await this.pool.query(query);
 			return result;
@@ -107,6 +107,34 @@ class Game {
 		}
 	}
 
+	//all taken boxes for a single game
+	async takenBoxes(id){
+		let query = `SELECT COUNT(*) AS taken FROM picks WHERE game= ${id};`
+		try {
+			let result = await this.pool.query(query);
+			return result;
+		}
+		catch(error){
+			return error;
+		}
+	}
+
+	//all taken squares for each user
+	async allGameInfo(game, admin){
+		let query = `SELECT COUNT(*) AS taken, u.id, u.alias, CONCAT(u.name_first,' ',u.name_last) AS name, g.cost, g.box_min AS min
+		FROM picks p 
+		INNER JOIN users u ON p.user = u.id
+		INNER JOIN game g ON g.id = ${game}
+		WHERE p.game = ${game} AND u.admin = '${admin}'
+		GROUP BY u.id;`
+		try {
+			let result = await this.pool.query(query);
+			return result;
+		}
+		catch(error){
+			return error;
+		}
+	}
 
 	
 }

@@ -1,5 +1,5 @@
-drop database if exists hockey_squares;
+drop database if exists hkypool;
 
-create database hockey_squares;
+create database hkypool;
 
-use hockey_squares;
+use hkypool;

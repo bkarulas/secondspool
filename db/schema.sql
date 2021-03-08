@@ -1,3 +1,9 @@
+drop database if exists hkypool;
+
+create database hkypool;
+
+use hkypool;
+
 SET time_zone = '-05:00';
 
 CREATE TABLE `nhl_team` (
@@ -18,7 +24,7 @@ CREATE TABLE `schedule` (
 );
 
 CREATE TABLE `admin` (
-  `id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `id` varchar(255) UNIQUE PRIMARY KEY NOT NULL,
   `name_first` varchar(255),
   `name_last` varchar(255),
   `email` varchar(255),
@@ -28,13 +34,13 @@ CREATE TABLE `admin` (
 );
 
 CREATE TABLE `users` (
-  `id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `id` varchar(255) UNIQUE PRIMARY KEY NOT NULL,
   `alias` varchar(255),
   `name_first` varchar(255),
   `name_last` varchar(255),
   `email` varchar(255),
   `phone` varchar(255),
-  `admin` int,
+  `admin` varchar(255),
   `act` int DEFAULT 1,
   `created` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime
@@ -47,7 +53,7 @@ CREATE TABLE `game` (
   `box_min` int,
   `box_max` int,
   `type` int,
-  `admin` int,
+  `admin` varchar(255),
   `act` int DEFAULT 1,
   `updated` datetime DEFAULT CURRENT_TIMESTAMP
 );
@@ -72,22 +78,21 @@ CREATE TABLE `game_type` (
 CREATE TABLE `picks` (
 	`id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `sec` int,
-    `user` int,
+    `user` varchar(255),
     `game` int,
     `created` datetime DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `paid` (
 	`id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `user` int,
+    `user` varchar(255),
     `game` int,
     `amount` int,
 	`updated` datetime DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `adminpw` (
-	`id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `admin` int,
+    `admin` varchar(255) UNIQUE PRIMARY KEY NOT NULL,
     `pword` varchar(255),
     `created` datetime DEFAULT CURRENT_TIMESTAMP,
     `updated` datetime
@@ -116,4 +121,3 @@ ALTER TABLE `paid` ADD FOREIGN KEY (`user`) REFERENCES `users` (`id`);
 ALTER TABLE `paid` ADD FOREIGN KEY (`game`) REFERENCES `game` (`id`);
 
 ALTER TABLE `adminpw` ADD FOREIGN KEY (`admin`) REFERENCES `admin` (`id`);
-

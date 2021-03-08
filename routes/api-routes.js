@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid');
 const express = require("express");
 
 //const Pick = require("../model/pick");
@@ -81,6 +82,7 @@ apiRoutes.post('/game/single', async (req, res) => {
 	let result = await game.getOneGame(info.id, info.admin);
 	if (result[0]) {
 		if (result[0].length > 0) {
+			console.log(result)
 			res.json(result[0]);
 		} else {
 			res.json({"error":"NO GAME GAME WITH THAT ID"});
@@ -97,11 +99,45 @@ apiRoutes.post("/game/delete", async (req, res) => {
 	await (result==1)?res.status(200).send('GAME WAS DELETED'):res.status(500).send("SOMTHING WENT WRONG");
 });
 
+//get all taken squares for a single game
+apiRoutes.post('/game/taken', async (req, res) =>{
+	let id = req.body.id
+	let result = await game.takenBoxes(id)
+	if (result[0]) {
+		if (result[0].length > 0) {
+			res.json(result[0]);
+		} else {
+			res.json({"error":"NO GAME GAME WITH THAT ID"});
+		}
+	} else {
+		res.json({"error":"SQL query returned undefined result"});
+	}
+})
+
+//get all the taken squares for each user
+apiRoutes.post('/game/info', async (req, res) => {
+	let info = req.body.info;
+	console.log(info);
+	let result = await game.allGameInfo(info.game, info.admin);
+	if (result[0]) {
+		if (result[0].length > 0) {
+			console.log(result)
+			res.json(result[0]);
+		} else {
+			res.json({"error":"NO GAME GAME WITH THAT ID"});
+		}
+	} else {
+		res.json({"error":"SQL query returned undefined result"});
+	}
+})
+
 //PLAYER
 //create player
 apiRoutes.post("/player/create", async (req, res) =>{
     let info = req.body.info;
-    let result = await player.createPlayer(info.firstName, info.lastName, info.alias, info.email, info.phone, info.admin);
+	let id = uuidv4();
+	console.log("ID: "+id);
+    let result = await player.createPlayer(id, info.firstName, info.lastName, info.alias, info.email, info.phone, info.admin);
 	await (result==1)?res.status(200).send('PLAYER WAS CREATED'):res.status(500).send("SOMTHING WENT WRONG");
 })
 
@@ -157,7 +193,7 @@ apiRoutes.post("/board/picks/:id", async (req, res) => {
 		if (result[0].length > 0) {
 			res.json(result[0]);
 		} else {
-			res.json([{"id":0}]);
+			res.json([{"id":null}]);
 		}
 	} else {
 		res.json({"error":"SQL query returned undefined result"});
@@ -208,13 +244,24 @@ apiRoutes.post('/login/user', async (req, res) => {
 	let user = req.body.info.user;
 	let board = req.body.info.board;
 	let result = await login.getUserId(user, board);
-	console.log("API")
-	console.log(result[0])
 	!result[0]?newReult='TextRow { id: 0 }':newReult=result[0]
-	console.log("New Result")
-	console.log(newReult);
-	console.log("LENGTH")
-	console.log(result[0].length);
+	if (result[0]) {
+		//if (result[0].length > 0) {
+			res.json(result[0]);
+		// } else {
+		// 	res.json({"id":"NO USER"});
+		// }
+	} else {
+		res.json({"error":"SQL query returned undefined result"});
+	}
+})
+
+//login Admin
+apiRoutes.post('/login/admin', async (req, res) => {
+	let email = req.body.info.email;
+	let pword = req.body.info.pword;
+	let result = await login.getAdminId(email, pword);
+	!result[0]?newReult='TextRow { id: 0 }':newReult=result[0]
 	if (result[0]) {
 		//if (result[0].length > 0) {
 			res.json(result[0]);

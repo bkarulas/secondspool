@@ -5,7 +5,7 @@ let alreadyTaken = 0;
 async function printAllPicks(){
     let allBoardPicks = await getAllBoardPicks(boardId)
     console.log(allBoardPicks);
-    if (allBoardPicks[0].id>0){
+    if (allBoardPicks[0].id != null){
         allBoardPicks.forEach(pick => {
             console.log(pick);
             (pick.sec<10)?divId = `0${pick.sec}`: divId = `${pick.sec}`;
@@ -47,13 +47,13 @@ async function enterThesePicks(){
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 pick:currentPicks,
-                userId: parseInt(userId),
+                userId: userId,
                 boardId:parseInt(boardId)
             })
         })
-        Alert.render(`Your number are in. Good luck !! </br> Click <b>"OK"</b> to view the updated board.`,`PICK ARE IN`);
+        Alert.render(`Your number are in. Good luck !! </br> Click <b>"OK"</b> to view the updated board.`,`PICKS ARE IN`);
     }else if (picksGood==false){
-        Alert.render(`One of the numbers you choose was just taken. Click <b>"OK"</b> to refresh the board and view the available numbers, and choose again.`,`OPPS SOMETHING WENT WRONG`);
+        Alert.render(`One of the numbers you choose was just taken. Click <b>"OK"</b> to refresh the board and view the available numbers, then choose again.`,`ERROR`);
     }else{
         console.log('SOMETHING WENT WRONG')
     }

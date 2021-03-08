@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <script  src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/login.css">
+</head>
+<body>
+    <section id='home'>
+        <img src="../assets/images/hky_bannerv4.jpg">
+    </section>
+    <section id='homesm'>
+        <img src="../assets/images/hky_bannerv41.jpg">
+    </section>
+    <section id='homexs'>
+        <img src="../assets/images/hky_bannerv42.jpg">
+    </section>
+
+
+    <section id="login">
+        <div id='mainlogin'>
+            <form>
+                <div class=logintitle>ADMIN LOGIN</div>
+                <div class='inputline'>
+                    <div class='loginsubtitle'>Email: </div>
+                    <input class='logintext' type="email" id='inputemail' required></input>
+                </div>
+                <div class='inputline'>
+                    <div class='loginsubtitle'>Password: </div>
+                    <input class='logintext' type="password" id='inputpassword' required></input>
+                </div>
+                <div class='inputline'>
+                    <input id ='submit' type='submit' class='loginsubmit' onclick="adminLogin()"></button>
+                </div>
+                <div id='usermessage'></div>
+            </form>
+        </div>
+    </section>
+
+    <!--SCRIPTS-->
+    <script src="../assets/js/admin/script.js"></script>
+    <script src="../assets/js/admin/login.js"></script>
+
+
+</body>
+</html>

@@ -1,3 +1,5 @@
+let adminId = getUrlVar(mainUrl, 'a');
+
 const allGamesSec = document.getElementById('viewallgames');
 const editGameSec = document.getElementById('editgame');
 const creatGameSec = document.getElementById('createnewgame');
@@ -8,6 +10,7 @@ const GameSec = document.getElementById('games');
 const PlayerSec = document.getElementById('players');
 const newPlayerBtn = document.getElementById('newplayerbutton');
 const newGameBtn = document.getElementById('newgamebutton');
+
 
 //GENERAL PRINT OPTIONS
 //prints each game info coloum

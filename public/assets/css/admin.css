@@ -2,6 +2,9 @@ body{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+#home img, #homesm img, #homexs img{padding: 10px 0px 10px 0px;
+}
+
 section{
     width: 98%;
     margin: 10px auto 20px auto;
@@ -41,14 +44,14 @@ section{
     font-size: .9rem;
 }
 
-.infoset{
+.gameset, .playerset{
     width:77%;
     padding-top: 5px;
 }
 .buttonset{width:23%;}
 
 /* EDIT  SECTION*/
-.edit .infoset{width: 100%;}
+.edit .gameset, .edit .playerset{width: 100%;}
 .edit .buttonset{
     width: 20%;
     margin: 12px auto 6px auto;
@@ -83,9 +86,14 @@ section{
 
 .singleGame{padding-top: 2px;}
 
-.secsubtitle, .singleGame, .editgameinfo, .editplayerinfo, .infoset, .buttonset{
+.secsubtitle, .singleGame, .editgameinfo, .editplayerinfo, .gameset, .playerset, .infoset, .buttonset,.infosecsubtitle{
     display: flex;
     flex-wrap: wrap;
+}
+
+.infoset, .infosecsubtitle{
+    width: 95%;
+    margin: auto;
 }
 
 button{
@@ -107,6 +115,9 @@ button{
     color: #ff0000;
 }
 
+#players .first{
+    padding-left:3px;
+} 
 .colxs{
     flex: 0 0 5%;
     max-width: 5%;
@@ -218,7 +229,7 @@ button{
     #games, #players{width: 94%;}
     .secsubtitle{font-size: 1.1rem;}
     .sectioninfo{font-size: .75rem;}
-    #viewallgames .infoset{
+    #viewallgames .gameset{
         width:100%;
         margin:5px auto 5px auto;
     }
@@ -230,7 +241,7 @@ button{
         margin: auto;
     }
     #viewallgames .secsubtitle .buttonset{display: none;}
-    #allplayer .infoset{
+    #allplayer .playerset{
         width:85%;
     }
     #allplayer .buttonset{
@@ -250,7 +261,7 @@ button{
     #games, #players{width: 97%;}
     .secsubtitle{font-size: .9rem;}
     .sectioninfo{font-size: .68rem;}
-    #allplayer .infoset{
+    #allplayer .playerset{
         width:100%;
         margin:5px auto 5px auto;
     }

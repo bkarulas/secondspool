@@ -17,8 +17,13 @@ module.exports = function(app) {
   });
 
   app.get("/admin", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/login.html"));
+  });
+
+  app.get("/admin/adindex", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/admin.html"));
   });
+
 
 
 };

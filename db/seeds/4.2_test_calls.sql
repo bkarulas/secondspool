@@ -5,10 +5,35 @@ SELECT * FROM game;
 SELECT * FROM users;
 SELECT * FROM admin;
 SELECT * FROM picks;
+SELECT * FROM adminpw;
+
+SELECT p.admin from adminpw p
+INNER JOIN admin a ON p.admin=a.id
+WHERE a.email = 'bkarulas@gmail.co' AND p.pword = 'Toronto47';
+
+SELECT COUNT(*) AS taken FROM picks WHERE game=1;
+
+SELECT a.id, pw.pword FROM admin a
+INNER JOIN adminpw pw ON a.id = pw.admin
+WHERE a.email='bkarulas@gmail.com';
+
+SELECT COUNT(*) AS `taken`, u.id, u.alias, CONCAT(u.name_first,' ',u.name_last) AS `name`, g.cost, g.box_min
+    FROM picks p 
+    INNER JOIN users u ON p.user = u.id
+    INNER JOIN game g ON g.id = 1
+    WHERE p.game = 1 AND u.admin = 1
+    GROUP BY u.id;
+
+SELECT u.id, u.alias, CONCAT(u.name_first,' ',LEFT(u.name_last,1)) AS name, p.sec 
+        FROM picks p
+        INNER JOIN users u ON p.user = u.id
+        WHERE game = 1
+        ORDER BY p.sec;
+
 
 SELECT u.id FROM users u
 INNER JOIN game g ON g.admin = u.admin
-WHERE u.email = 'user1@user.com' AND g.id = 1;
+WHERE u.email = 'user1@user.com' AND g.id = 2;
 
 SELECT id, alias, CONCAT(name_first,' ',LEFT(name_last,1)) AS name, email, phone
 FROM users

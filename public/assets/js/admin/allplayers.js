@@ -2,34 +2,33 @@ let allPlayerDiv = document.getElementById('allplayerinfo');
 
 
 
-async function printAllPlayers(adminId){
+async function printAllPlayers(){
     allPlayerDiv.innerHTML = '';
-    let allPlayers = await getAllPlayers(adminId);
+    let allPlayers = await getAllPlayers();
     console.log(allPlayers);
     for (let i=0; i<allPlayers.length; i++){
         (i%2) ? bgcolor = 'optiondark': bgcolor = 'optionlight';
         let singlePlayerDiv = document.createElement('div');
         singlePlayerDiv.className = `${bgcolor} singleGame` ;
-        let infoSet = document.createElement('div');
-        infoSet.className = 'infoset'
-        infoSet.setAttribute('id', `player${allPlayers[i].id}`)
-        infoSet.appendChild(printEachCol(allPlayers[i].id, 'xs'))
-        infoSet.appendChild(printEachCol(allPlayers[i].nameFirst, 'md'));
-        infoSet.appendChild(printEachCol(allPlayers[i].nameLast, 'lg'));
-        infoSet.appendChild(printEachCol(allPlayers[i].alias, 'lg'));
-        infoSet.appendChild(printEachCol(allPlayers[i].email, 'xl'));
-        infoSet.appendChild(printEachCol(allPlayers[i].phone, 'md'));
-        singlePlayerDiv.appendChild(infoSet);
-        let buttonSet = document.createElement('div')
-        buttonSet.className='buttonset';
-        buttonSet.appendChild(createButton('edit', 'Player','xl', allPlayers[i].id));
-        buttonSet.appendChild(createButton('delete', 'Player','xl', allPlayers[i].id));
-        singlePlayerDiv.appendChild(buttonSet);
+        let playerSetDiv = document.createElement('div');
+        playerSetDiv.className = 'playerset'
+        playerSetDiv.setAttribute('id', `player${allPlayers[i].id}`)
+        playerSetDiv.appendChild(printEachCol(allPlayers[i].nameFirst, 'md first'));
+        playerSetDiv.appendChild(printEachCol(allPlayers[i].nameLast, 'lg'));
+        playerSetDiv.appendChild(printEachCol(allPlayers[i].alias, 'lg'));
+        playerSetDiv.appendChild(printEachCol(allPlayers[i].email, 'xl'));
+        playerSetDiv.appendChild(printEachCol(allPlayers[i].phone, 'md'));
+        singlePlayerDiv.appendChild(playerSetDiv);
+        let buttonSetDiv = document.createElement('div')
+        buttonSetDiv.className='buttonset';
+        buttonSetDiv.appendChild(createButton('edit', 'Player','xl', `'${allPlayers[i].id}'`));
+        buttonSetDiv.appendChild(createButton('delete', 'Player','xl', `'${allPlayers[i].id}'`));
+        singlePlayerDiv.appendChild(buttonSetDiv);
         allPlayerDiv.appendChild(singlePlayerDiv);
     }
 }
 
-async function getAllPlayers(adminId){
+async function getAllPlayers(){
     const res = await fetch("/api/player/all",{
             method:"POST",
             body: JSON.stringify({adminId}),
@@ -41,40 +40,39 @@ async function getAllPlayers(adminId){
 
 async function buttonPlayerEdit(id){
     showThisSection('e', 'Player');
-    let player = await getSinglePlayer(id, adminId);
-    clearAreaById(['editplayerid','editplayerfirst','editplayerlast','editplayeralias','editplayeremail','editplayerphone'], 'html');
-    document.getElementById('editplayerid').innerText = player[0].id;
+    let player = await getSinglePlayer(id);
+    clearAreaById(['editplayerfirst','editplayerlast','editplayeralias','editplayeremail','editplayerphone'], 'html');
+    //document.getElementById('editplayerid').innerText = player[0].id;
     document.getElementById('editplayerfirst').appendChild(singlePlayerEdit('first',player[0].nameFirst))
     document.getElementById('editplayerlast').appendChild(singlePlayerEdit('last',player[0].nameLast))
     document.getElementById('editplayeralias').appendChild(singlePlayerEdit('alias',player[0].alias))
     document.getElementById('editplayeremail').appendChild(singlePlayerEdit('email',player[0].email))
     document.getElementById('editplayerphone').appendChild(singlePlayerEdit('phone',player[0].phone))
     let editSaveBtn = document.getElementById('editplayersave')
-    editSaveBtn.setAttribute('onclick',`buttonPlayerSave(${player[0].id})`);
+    editSaveBtn.setAttribute('onclick',`buttonPlayerSave('${player[0].id}')`);
     editSaveBtn.innerText='SAVE';
     let editCancleBtn = document.getElementById('editplayercancle')
-    editCancleBtn.setAttribute('onclick',`adminStartPage(${adminId})`);
+    editCancleBtn.setAttribute('onclick',`adminStartPage()`);
     editCancleBtn.innerText='CANCLE';
 }
 
 async function buttonPlayerDelete(id){
-    await fetch("api/player/delete",{
+    await fetch("/api/player/delete",{
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({id:id})
     });
-    setTimeout(function(){ adminStartPage(adminId) }, 500);
-    //setTimeout(function(){ printAllPlayers(adminId) }, 500);
+    setTimeout(function(){ adminStartPage() }, 500);
 }
 
-async function getSinglePlayer(id, admin){
+async function getSinglePlayer(id){
     const res = await fetch("/api/player/single",{
         method:"POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             info:{
                 id: id,
-                admin: admin
+                admin: adminId
             }
         })
 });
@@ -85,7 +83,7 @@ return res.json();
 function singlePlayerEdit(value, sel){
     let editValue = document.createElement('input');
     editValue.className = 'answer';
-    editValue.setAttribute('type','text');
+    (value=='email')?editValue.setAttribute('type','email'):editValue.setAttribute('type','text');
     editValue.setAttribute('id',`edit${value}`);
     editValue.setAttribute('name',`edit${value}`);
     editValue.setAttribute('value',sel);
@@ -102,7 +100,7 @@ function buttonPlayerSave(id){
     console.log(`GO ON: ${goOn}`)
     if (goOn){
         console.log(`JS ID: ${id} - ${firstName} ${editlast.value} - ${editalias.value} - ${editphone.value} - ${editemail.value} --> ADMIN: ${adminId}`)
-        fetch("api/player/update",{
+        fetch("/api/player/update",{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -120,8 +118,7 @@ function buttonPlayerSave(id){
         goOn=false;
         editFirstDiv.className = 'answer';
         editEmailDiv.className = 'answer';
-        //setTimeout(function(){ printAllPlayers(adminId) }, 500);
-        setTimeout(function(){ adminStartPage(adminId) }, 500);
+        setTimeout(function(){ adminStartPage() }, 500);
     }else{
         if (firstName=='') {
             editFirstDiv.setAttribute('placeholder','Enter A Name')

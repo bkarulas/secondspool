@@ -41,7 +41,7 @@ class Board {
     async getUserInfo(id){
         let query = `SELECT id, alias, CONCAT(name_first,' ',LEFT(name_last,1)) AS name, email, phone
         FROM users
-        WHERE id = ${id};`;
+        WHERE id = '${id}';`;
         try {
             let result = await this.pool.query(query);
             return result;
@@ -55,9 +55,9 @@ class Board {
         let query = `INSERT INTO picks (sec, user, game) VALUES `;
         for (let i=0; i<pick.length; i++){
             if ((i+1 == pick.length)){
-                query += `(${pick[i]}, ${id}, ${board});`;
+                query += `(${pick[i]}, '${id}', ${board});`;
             }else{
-                query += `(${pick[i]}, ${id}, ${board}), `;
+                query += `(${pick[i]}, '${id}', ${board}), `;
             }
         }
         console.log(`QUERY ${query}`);

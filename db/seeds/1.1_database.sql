@@ -1,5 +1,5 @@
-drop database if exists hkypool;
+drop database if exists optical_db;
 
-create database hkypool;
+create database optical_db;
 
-use hkypool;
+use optical_db;

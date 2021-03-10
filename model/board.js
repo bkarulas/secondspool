@@ -29,6 +29,7 @@ class Board {
         INNER JOIN nhl_team vis ON vis.id = s.vis_id
         INNER JOIN nhl_team home ON home.id = s.home_id
         WHERE g.id = ${id};`;
+        console.log(`QUERY:${query}`)
         try {
             let result = await this.pool.query(query);
             return result;

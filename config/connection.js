@@ -8,12 +8,6 @@ let	pool = mysql.createPool({
 		port: process.env.DB_PORT ,
 		user: process.env.DB_USER ,
 		password: process.env.DB_PASSWORD
-		// host: 'localhost',
-		// database: 'franbrad_hkypool',
-		// port: '3306',
-		// user: 'franbrad_hkyadmin' ,
-		// password: 'T0R0Nt)4&'
-
 	});
 
 module.exports = pool;

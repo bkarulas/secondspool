@@ -13,17 +13,14 @@
     <link rel='stylesheet' href="./assets/css/nav.css">
 </head>
 <body>
-    <nav class="topnav" id="myTopnav">
-        <div>
-            <a href='#home'>HOME</a>
-            <a href='#login'>LOGIN</a>
-            <a href='#howitworks'>HOW IT WORKS</a>
-            <a href='#howtoplay'>HOW TO PLAY</a>
-            <a href="javascript:void(0);" style="font-size:15px;" class="icon" id="myMenuFunction">&#9776;</a>
-        </div>
-    </nav>
     <section id='home'>
-        <img src="./assets/images/hky_bannerv4.jpg">
+        <img src="../assets/images/hky_banner20.jpg">
+    </section>
+    <section id='homesm'>
+        <img src="../assets/images/hky_banner15.jpg">
+    </section>
+    <section id='homexs'>
+        <img src="../assets/images/hky_banner10.jpg">
     </section>
     <section id='alertBox'>
         <div id='dialogoverlay'></div>
@@ -65,6 +62,11 @@
         <div id='boardbuttons'>
             <button id='clearcurrentpicks' name='clearcurrentpicks' onclick="createTheBoard()">Clear Picks</button>
             <button id='submitcurrentpicks' name='submitcurrentpicks' onclick="enterThesePicks()">Enter Picks</button>
+        </div>
+    </section>
+    <section id='footer'>
+        <div class='mainsection'>
+            <b>HKY Poll</b></br>&#169; 2021
         </div>
     </section>
     <script src='./assets/js/script.js'></script>

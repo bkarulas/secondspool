@@ -59,6 +59,18 @@
     padding: 2px 30px 5px 30px;
 }
 
+#footer{
+    background-color: #25274d;
+    padding: 10px 0px 10px 0px;
+    margin: 0px;
+}
+
+#footer .mainsection{
+    text-align: center;
+    font-size: 1.3rem;
+    color: #ff0000;
+}
+
 
 /*MEDIA*/
 @media screen and (max-width: 1600px){
@@ -109,6 +121,7 @@
         font-size: 1.1rem;
     }
     #dialogbox div #dialogboxfoot button {font-size: 1.1rem;}
+    #footer .mainsection {font-size: 1.1rem};
 }
 
 @media screen and (max-width: 600px){
@@ -125,6 +138,7 @@
     }
     #dialogbox div #dialogboxbody {font-size: 1rem;}
     #dialogbox div #dialogboxfoot button {font-size: 1rem;}
+    #footer .mainsection {font-size: 1rem};
 }
 
 @media screen and (max-width: 480px){
@@ -150,5 +164,6 @@
     #footer .mainsection {font-size: .8rem};
 
     #dialogbox div #dialogboxbody {font-size: .9rem;}
+    #footer .mainsection {font-size: .8rem};
 }
 

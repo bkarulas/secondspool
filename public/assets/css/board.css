@@ -5,6 +5,9 @@
     margin:auto;
 }
 
+#home img, #homesm img, #homexs img{padding: 10px 0px 10px 0px;
+}
+
 .singleblock, .taken, .selected{
     flex: 0 0 8%;
     max-width: 8%;

@@ -1,6 +1,9 @@
 # Environment Variables
 .env
 
+#Photoshop
+.psd
+
 # Logs
 logs
 *.log

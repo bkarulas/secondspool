@@ -6,7 +6,7 @@ body{
 
 #login{
     padding: 10px 0px 50px 0px;
-    background-image: linear-gradient(#4d4f85, #eeeeee);
+    background-image: linear-gradient(#323466, #eeeeee);
     margin: auto;
     background-color: #7591aa;
 }
@@ -132,17 +132,6 @@ form{
     list-style-type:square;
 }
 
-#footer{
-    background-color: #25274d;
-    padding: 10px 0px 10px 0px;
-    margin: 0px;
-}
-
-#footer .mainsection{
-    text-align: center;
-    font-size: 1.3rem;
-    color: #ff0000;
-}
 
 /*MEDIA*/
 @media screen and (max-width: 1600px){
@@ -187,7 +176,6 @@ form{
     .sectitle{font-size: 1.3rem;}
     .info, .infopoint, .secsubtitle{font-size: 1.1rem;}
     .subinfo{font-size: 1rem;}
-    #footer .mainsection {font-size: 1.1rem};
 }
 
 @media screen and (max-width: 600px){
@@ -201,7 +189,6 @@ form{
     .secsubtitle{font-size: 1rem;}
     .info, .infopoint{font-size: .9rem;}
     .subinfo{font-size: .80rem;}
-    #footer .mainsection {font-size: 1rem};
 }
 
 @media screen and (max-width: 480px){
@@ -223,5 +210,4 @@ form{
     .secsubtitle{font-size: .9rem;}
     .info, .infopoint{font-size: .75rem;}
     .subinfo{font-size: .65rem;}
-    #footer .mainsection {font-size: .8rem};
 }

@@ -1,6 +1,5 @@
 let message = getUrlVar(mainUrl, 'm');
 window.onload = checkForErrors()
-console.log(message);
 
 document.querySelector('#login').addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
@@ -27,7 +26,7 @@ function checkForErrors(){
 async function enterPool(){
     let userEmail = document.getElementById('inputemail').value;
     let userBoard = document.getElementById('inputboard').value;
-    console.log(`1. USER=${userEmail} BOARD=${userBoard}`)
+    console.log(`1. USER=${userEmail} BOARD=${userBoard} BASEURL=${baseUrl}`)
     if (!userEmail || !userBoard){
         if (!userEmail){
             let emailDiv = document.getElementById('inputemail');
@@ -40,7 +39,7 @@ async function enterPool(){
             boardDiv.setAttribute('placeholder','Enter a valid Board');
         }
     }else{
-        console.log(`2. USER=${userEmail} BOARD=${userBoard}`)
+        console.log(`1. USER=${userEmail} BOARD=${userBoard} BASEURL=${baseUrl}`)
         let userId = await getUserId(userEmail, userBoard);
         if (userId.length>0){
             console.log('USER')
@@ -56,7 +55,7 @@ async function enterPool(){
 }
 
 async function getUserId(userEmail,userBoard){
-    console.log(`3. USER=${userEmail} BOARD=${userBoard}`)
+    console.log(`1. USER=${userEmail} BOARD=${userBoard} BASEURL=${baseUrl}`)
     const res = await fetch("/api/login/user",{
         method:"POST",
         headers: { "Content-Type": "application/json" },

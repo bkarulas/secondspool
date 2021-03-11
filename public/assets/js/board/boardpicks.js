@@ -3,6 +3,7 @@ let alreadyTaken = 0;
 
 //Prints all the picks taken and makes a 
 async function printAllPicks(){
+    alreadyTaken = 0;
     let allBoardPicks = await getAllBoardPicks(boardId)
     if (allBoardPicks[0].id != null){
         allBoardPicks.forEach(pick => {

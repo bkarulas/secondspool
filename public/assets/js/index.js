@@ -1,7 +1,4 @@
-// const theMainUrl = window.location.href;
-// const theUrl = theMainUrl.substring(0,theMainUrl.indexOf('/?'));
-const theUrl = "http://localhost:8080"
-// const theUrl = "http://hkypool.com"
+const theUrl = "http://hkypool.com"
 
 let inputemail = document.getElementById('inputemail');
 let inputboard = document.getElementById('inputboard');

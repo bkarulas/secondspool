@@ -96,6 +96,21 @@ section{
     margin: auto;
 }
 
+.infosecsubtitle{
+    background-color: #25274d;
+    color: #ff0000;
+    font-size: 1.1rem;
+    padding: 5px 2px 5px 2px;
+    font-weight: 600;
+}
+
+.infoset{
+    color:#25274d;
+    padding: 2px;
+    font-size: 1rem;
+}
+
+
 button{
     background-color: #25274d;
     color: #eeeeee;
@@ -223,6 +238,9 @@ button{
     }
     .edit .buttonset button{font-size: .7rem;}
     .question{font-size: 1.1rem;}
+    .infoset, .infosecsubtitle{width: 98%;}
+    .infosecsubtitle{font-size: .9rem;}
+    .infoset{font-size: 0.8rem;}
 }
 
 @media screen and (max-width: 900px){
@@ -309,6 +327,8 @@ button{
         max-width: 45%;
     }
     .question{font-size: .9rem};
+    .infosecsubtitle{font-size: .75rem;}
+    .infoset{font-size: 0.6rem;}
 }
 
 @media screen and (max-width: 600px){

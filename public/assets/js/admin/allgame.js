@@ -52,32 +52,35 @@ async function buttonGameDelete(id){
 
 //button game info
 async function buttonGameInfo(gameId){
-    let sectionInfo = document.getElementsByClassName('infoset');
-    sectionInfo.style.display='none'
     let gameInfo = await getAllGameInfo(gameId)
     gameInfoDiv = document.getElementById(`info${gameId}`)
-    let titleDiv = document.createElement('div');
-    titleDiv.className='infosecsubtitle'
-    titleDiv.appendChild(printEachCol('Alias','lg'))
-    titleDiv.appendChild(printEachCol('Name','lg'));
-    titleDiv.appendChild(printEachCol('Taken','md'));
-    titleDiv.appendChild(printEachCol('Owing','md'));
-    titleDiv.appendChild(printEachCol('Paid','md'));
-    titleDiv.appendChild(printEachCol('Outstanding','md'));
-    gameInfoDiv.appendChild(titleDiv);
-    gameInfo.forEach(info => {
-        let infoDiv = document.createElement('div');
-        infoDiv.className='infosinglegame';
-        infoDiv.className='infosecsubtitle'
-        infoDiv.appendChild(printEachCol(info.alias,'lg'))
-        infoDiv.appendChild(printEachCol(info.name,'lg'));
-        infoDiv.appendChild(printEachCol(info.taken,'md'));
-        infoDiv.appendChild(printEachCol(`$${(info.taken/info.min)*info.cost}`,'md'));
-        infoDiv.appendChild(printEachCol(info.min,'md'));
-        infoDiv.appendChild(printEachCol('$0.00','md'));
-        gameInfoDiv.appendChild(infoDiv);
-        gameInfoDiv.style.display='block'
-    });
+    gameInfoDiv.innerHTML = '';
+    if (gameInfoDiv.style.display == 'block'){
+        gameInfoDiv.style.display='none';
+    }else{
+        let titleDiv = document.createElement('div');
+        titleDiv.className='infosecsubtitle'
+        titleDiv.appendChild(printEachCol('Alias','lg'))
+        titleDiv.appendChild(printEachCol('Name','lg'));
+        titleDiv.appendChild(printEachCol('Taken','md'));
+        titleDiv.appendChild(printEachCol('Owing','md'));
+        titleDiv.appendChild(printEachCol('Paid','md'));
+        titleDiv.appendChild(printEachCol('Owning','md'));
+        gameInfoDiv.appendChild(titleDiv);
+        gameInfo.forEach(info => {
+            let infoDiv = document.createElement('div');
+            infoDiv.className='infosinglegame';
+            infoDiv.className='infoset'
+            infoDiv.appendChild(printEachCol(info.alias,'lg'))
+            infoDiv.appendChild(printEachCol(info.name,'lg'));
+            infoDiv.appendChild(printEachCol(info.taken,'md'));
+            infoDiv.appendChild(printEachCol(`$${(info.taken/info.min)*info.cost}`,'md'));
+            infoDiv.appendChild(printEachCol('--','md'));
+            infoDiv.appendChild(printEachCol('--','md'));
+            gameInfoDiv.appendChild(infoDiv);
+            gameInfoDiv.style.display='block'
+        });
+    }
 }
 
 //button edit game

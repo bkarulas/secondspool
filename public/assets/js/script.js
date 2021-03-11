@@ -1,5 +1,5 @@
 mainUrl = window.location.href;
-baseUrl = mainUrl.substring(0,mainUrl.indexOf('?'));
+baseUrl = mainUrl.substring(0,mainUrl.indexOf('/?'));
 
 monthFull = ['January', 'Feburay', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 monthShort = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov','Dec'];

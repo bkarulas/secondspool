@@ -45,7 +45,7 @@ body{
 }
 
 
-form{
+#form{
     margin-top: 10%;
     border: 7px solid #25274d;
     background-color: #e0d8d8;
@@ -128,7 +128,7 @@ form{
         font-size: 1rem;
         margin: 0px 10px 0px auto;
     }
-    form{
+    #form{
         padding-bottom: 7px;
         border-width: 4px;
     }

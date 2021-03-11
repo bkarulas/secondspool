@@ -1,3 +1,12 @@
+document.getElementById('form').addEventListener("keyup", function(e) {
+    if (e.keyCode === 13) {
+     e.preventDefault();
+     document.getElementById("submit").click();
+    }
+  });
+
+
+
 async function adminLogin(){
     let email=document.getElementById('inputemail').value;
     let pword = document.getElementById('inputpassword').value;

@@ -1,18 +1,16 @@
-const theUrl = "http://hkypool.com"
-
-let inputemail = document.getElementById('inputemail');
-let inputboard = document.getElementById('inputboard');
-
+document.getElementById('form').addEventListener("keyup", function(e) {
+    if (e.keyCode === 13) {
+     e.preventDefault();
+     document.getElementById("submit").click();
+    }
+  });
 
 async function enterPool(){
-    let userEmail = '';
-    let userBoard = '';
-    userEmail = inputemail.value;
-    userBoard = inputboard.value;
+    userEmail = document.getElementById('inputemail').value;
+    userBoard = document.getElementById('inputboard').value;
+    console.log(userEmail, userBoard)
     let userId = await getUserId(userEmail, userBoard);
-    //let gameUrl='';
-    (userId.length>0)?location.replace(theUrl+`/board?b=${userBoard}&u=${userId[0].id}`):location.replace(theUrl);
-    //location.replace(theUrl+gameUrl);
+    (userId.length>0)?location.replace(baseUrl+`/board?b=${userBoard}&u=${userId[0].id}`):location.replace(baseUrl);
 }
 
 async function getUserId(userEmail,userBoard){

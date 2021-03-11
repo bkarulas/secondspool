@@ -20,7 +20,7 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
 
-  app.get("/admin/adindex", function(req, res) {
+  app.get("/adindex", function(req, res) {
     res.sendFile(path.join(__dirname, "../public/admin.html"));
   });
 

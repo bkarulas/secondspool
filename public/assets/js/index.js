@@ -41,16 +41,8 @@ async function enterPool(){
     }else{
         console.log(`1. USER=${userEmail} BOARD=${userBoard} BASEURL=${baseUrl}`)
         let userId = await getUserId(userEmail, userBoard);
-        if (userId.length>0){
-            console.log('USER')
-            console.log (userId[0]);
-            let gameUrl = `board?b=${userBoard}&u=${userId[0].id}`;
-            console.log(baseUrl+gameUrl);
-            location.replace(baseUrl+gameUrl);
-        }else{
-            let gameUrl= "?m=ERROR"
-            location.replace(baseUrl+gameUrl);
-        }
+        //setTimeout(letTheUserIn (userId, userBoard), 5000);
+        await letTheUserIn (userId, userBoard)
     }
 }
 
@@ -67,4 +59,17 @@ async function getUserId(userEmail,userBoard){
         })
     });
     return res.json();
+}
+
+async function letTheUserIn(userId, userBoard){
+    if (userId.length>0){
+        console.log('USER')
+        console.log (userId[0]);
+        let gameUrl = `board?b=${userBoard}&u=${userId[0].id}`;
+        console.log(baseUrl+gameUrl);
+        location.replace(baseUrl+gameUrl);
+    }else{
+        let gameUrl= "?m=ERROR"
+        location.replace(baseUrl+gameUrl);
+    }
 }

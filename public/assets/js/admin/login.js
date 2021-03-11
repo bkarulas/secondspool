@@ -6,7 +6,8 @@ async function adminLogin(){
     console.log(login[0]);
     let adminId = login[0].admin
     console.log(`Admin ID: ${adminId}`);
-    (adminId != '')? adminUrl=`/adindex?a=${adminId}`:adminUrl = '/admin?m=error';
+    setTimeout((adminId != '')? adminUrl=`/adindex?a=${adminId}`:adminUrl = '/admin?m=error', 5000);
+    //(adminId != '')? adminUrl=`/adindex?a=${adminId}`:adminUrl = '/admin?m=error';
     console.log(baseUrl+adminUrl);
     location.replace(baseUrl+adminUrl);
 }

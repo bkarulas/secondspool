@@ -12,7 +12,7 @@ async function enterPool(){
     let userId = await getUserId(userEmail, userBoard);
     let gameUrl='';
     (userId.length>0)?gameUrl = `/board?b=${userBoard}&u=${userId[0].id}`:gameUrl='';
-    setTimeout( function (gameUrl){window.location.href = theUrl+gameUrl},1000);
+    setTimeout( location.replace(theUrl+gameUrl),1000);
 }
 
 async function getUserId(userEmail,userBoard){

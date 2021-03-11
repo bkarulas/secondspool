@@ -1,6 +1,6 @@
 // const theMainUrl = window.location.href;
 // const theUrl = theMainUrl.substring(0,theMainUrl.indexOf('/?'));
-const theURL = "https://hkypool.com"
+const theUrl = "https://hkypool.com"
 
 let inputemail = document.getElementById('inputemail');
 let inputboard = document.getElementById('inputboard');

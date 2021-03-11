@@ -1,6 +1,6 @@
 // const theMainUrl = window.location.href;
 // const theUrl = theMainUrl.substring(0,theMainUrl.indexOf('/?'));
-const theUrl = "https://hkypool.com"
+const theUrl = "http://hkypool.com"
 
 let inputemail = document.getElementById('inputemail');
 let inputboard = document.getElementById('inputboard');
@@ -10,9 +10,9 @@ async function enterPool(){
     let userEmail = inputemail.value;
     let userBoard = inputboard.value;
     let userId = await getUserId(userEmail, userBoard);
-    let gameUrl='';
-    (userId.length>0)?gameUrl = `/board?b=${userBoard}&u=${userId[0].id}`:gameUrl='';
-    setTimeout( location.replace(theUrl+gameUrl),1000);
+    //let gameUrl='';
+    (userId.length>0)?location.replace(theUrl+`/board?b=${userBoard}&u=${userId[0].id}`):location.replace(theUrl);
+    //location.replace(theUrl+gameUrl);
 }
 
 async function getUserId(userEmail,userBoard){

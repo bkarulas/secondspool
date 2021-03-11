@@ -4,10 +4,8 @@ let alreadyTaken = 0;
 //Prints all the picks taken and makes a 
 async function printAllPicks(){
     let allBoardPicks = await getAllBoardPicks(boardId)
-    console.log(allBoardPicks);
     if (allBoardPicks[0].id != null){
         allBoardPicks.forEach(pick => {
-            console.log(pick);
             (pick.sec<10)?divId = `0${pick.sec}`: divId = `${pick.sec}`;
             let boardBlockDiv = document.getElementById(`block${divId}`);
             boardBlockDiv.className = 'taken';
@@ -28,12 +26,10 @@ async function printAllPicks(){
 async function enterThesePicks(){
     let allBoardPicks = await getAllBoardPicks(boardId)
     currentPicks.sort(function (a,b){return a-b})
-    console.log(currentPicks)
     picksGood = true;
     for (i=0; i<currentPicks.length; i++){
         for (p=0; p<allBoardPicks.length; p++){
             if (currentPicks[i]==allBoardPicks[p].sec){
-                console.log("TAKEN: "+currentPicks[i]+" => "+allBoardPicks[p].sec)
                 picksGood = false;
                 p=allBoardPicks.length;
             }
@@ -54,8 +50,6 @@ async function enterThesePicks(){
         Alert.render(`Your number are in. Good luck !! </br> Click <b>"OK"</b> to view the updated board.`,`PICKS ARE IN`);
     }else if (picksGood==false){
         Alert.render(`One of the numbers you choose was just taken. Click <b>"OK"</b> to refresh the board and view the available numbers, then choose again.`,`ERROR`);
-    }else{
-        console.log('SOMETHING WENT WRONG')
     }
 }
 
@@ -66,7 +60,6 @@ async function selectThisBox(id){
     //creates a new max if the user has already made picks
     let max = boardInfo[0].max - alreadyTaken;
     if (currentPicks.length == max){
-        console.log("MAX HIT")
         document.getElementById('messageselected').innerHTML = `You can <b>not</b> enter in any more pick for this game, you have already selected the max of <b>${alreadyTaken}</b>`;
         (currentPicks.length>0)?document.getElementById('submitcurrentpicks').disabled = false :document.getElementById('submitcurrentpicks').disabled = true;
     }else if (currentPicks.length < max){
@@ -79,16 +72,12 @@ async function selectThisBox(id){
         currentBox = document.getElementById(`block${blockId}`);
         currentBox.setAttribute('onclick', ` this.disabled=true;`);
         currentBox.className='selected';
-        console.log(currentPicks);
         analyzeCurrentPick(boardInfo[0].min, max, currentPicks.length);
     }
 }
 
 //see what pick they are on and the message to display.
 async function analyzeCurrentPick(min, max, num){
-    console.log("MIN: "+min);
-    console.log("MAX: "+max);
-    console.log("num: "+num);
     let messageDiv = document.getElementById('messageselected');
     let submitPicks = document.getElementById('submitcurrentpicks');
     submitPicks.disabled = true;

@@ -1,7 +1,5 @@
 let boardId = getUrlVar(mainUrl, 'b');
 let userId = getUrlVar(mainUrl, 'u');
-console.log(boardId);
-console.log(userId);
 createTheBoard();
 
 window.onload = createTheBoard()

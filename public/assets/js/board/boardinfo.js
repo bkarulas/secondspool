@@ -3,7 +3,6 @@ printTheBoardInfo(boardId)
 
 async function printTheBoardInfo(boardId){
     let boardInfo = await getTheBoardInfo(boardId);
-    console.log(boardInfo);
     printEachInfoLine('game', boardInfo[0].game);
     printEachInfoLine('datetime', printDateTime(boardInfo[0].gametime));
     printEachInfoLine('type', boardInfo[0].type);

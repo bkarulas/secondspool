@@ -8,7 +8,7 @@ async function printTheBoardInfo(boardId){
     printEachInfoLine('type', boardInfo[0].type);
     printEachInfoLine('minmax', `${boardInfo[0].min} Min-${boardInfo[0].max} Max`);
     (boardInfo[0].min>1? box='Boxes':box='Box')
-    printEachInfoLine('cost', `$${boardInfo[0].cost}/${boardInfo[0].min} ${box}`);
+    printEachInfoLine('cost', `$${boardInfo[0].cost} / ${boardInfo[0].min} ${box}`);
 }
 
 

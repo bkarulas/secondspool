@@ -48,7 +48,7 @@ async function enterThesePicks(){
                 boardId:parseInt(boardId)
             })
         })
-        Alert.render(`Your number are in. Good luck !! </br> Click <b>"OK"</b> to view the updated board.`,`PICKS ARE IN`);
+        Alert.render(`Your picks are in. Good luck !! </br> Click <b>"OK"</b> to view the updated board.`,`PICKS ARE IN`);
     }else if (picksGood==false){
         Alert.render(`One of the numbers you choose was just taken. Click <b>"OK"</b> to refresh the board and view the available numbers, then choose again.`,`ERROR`);
     }

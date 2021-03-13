@@ -9,7 +9,14 @@ async function printAllPicks(){
         allBoardPicks.forEach(pick => {
             (pick.sec<10)?divId = `0${pick.sec}`: divId = `${pick.sec}`;
             let boardBlockDiv = document.getElementById(`block${divId}`);
-            boardBlockDiv.className = 'taken';
+            let takenClass = '';
+            if (pick.id == userId){
+                alreadyTaken++;
+                takenClass = 'taken yours';
+            }else{
+                takenClass = 'taken';
+            }
+            boardBlockDiv.className = takenClass;
             boardBlockDiv.setAttribute('onclick', ` this.disabled=true;`)
             let boardNameDiv = document.getElementById(`name${divId}`);
             (pick.alias=='')?divName = pick.name:divName=pick.alias;

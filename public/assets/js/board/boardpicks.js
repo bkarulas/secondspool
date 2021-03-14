@@ -22,7 +22,6 @@ async function printAllPicks(){
             (pick.alias=='')?divName = pick.name:divName=pick.alias;
             (divName.length>8)?boardNameDiv.className = 'boardnamesm':'';
             boardNameDiv.innerText=  divName.toUpperCase();
-            (pick.id == userId)? alreadyTaken++:'';
         });
         if (alreadyTaken>0){
             document.getElementById('messagetaken').innerHTML = `<b>TAKEN: ${alreadyTaken}</b>`;

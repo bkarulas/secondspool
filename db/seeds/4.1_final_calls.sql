@@ -32,3 +32,9 @@ INNER JOIN game_type t ON t.id = g.type
 INNER JOIN nhl_team vis ON vis.id = s.vis_id
 INNER JOIN nhl_team home ON home.id = s.home_id
 WHERE admin = 1 AND act = 1 AND g.id = 4;  /****************************<= ADMIN ID AND GAME ID GOES HERE****************************/
+
+
+/*ONE GAME CALLED BY GAME ID*/
+SELECT alias, name_first AS nameFirst, name_last AS nameLast, email, phone
+From users
+WHERE admin = 1 AND id = 2;  /****************************<= ADMIN ID AND GAME ID GOES HERE****************************/

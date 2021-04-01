@@ -9,7 +9,7 @@ SELECT * FROM adminpw;
 
 SELECT p.admin from adminpw p
 INNER JOIN admin a ON p.admin=a.id
-WHERE a.email = 'bkarulas@gmail.co' AND p.pword = 'Toronto47';
+WHERE a.email = 'bkarulas@gmail.com' AND p.pword = 'Toronto47';
 
 SELECT COUNT(*) AS taken FROM picks WHERE game=1;
 

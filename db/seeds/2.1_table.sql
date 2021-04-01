@@ -28,7 +28,7 @@ CREATE TABLE `admin` (
 );
 
 CREATE TABLE `users` (
-  `id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `id` varchar(255) UNIQUE PRIMARY KEY NOT NULL,
   `alias` varchar(255),
   `name_first` varchar(255),
   `name_last` varchar(255),
@@ -72,14 +72,14 @@ CREATE TABLE `game_type` (
 CREATE TABLE `picks` (
 	`id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
     `sec` int,
-    `user` int,
+    `user` varchar(255),
     `game` int,
     `created` datetime DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE `paid` (
 	`id` int UNIQUE PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    `user` int,
+    `user` varchar(255),
     `game` int,
     `amount` int,
 	`updated` datetime DEFAULT CURRENT_TIMESTAMP

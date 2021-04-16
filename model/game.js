@@ -67,7 +67,8 @@ class Game {
 		INNER JOIN game_type t ON t.id = g.type
 		INNER JOIN nhl_team vis ON vis.id = s.vis_id
 		INNER JOIN nhl_team home ON home.id = s.home_id
-		WHERE act = 1 AND admin = '${id}';`;
+		WHERE act = 1 AND admin = '${id}'
+		ORDER BY g.id DESC;`;
 		try {
 			let result = await this.pool.query(query);
 			return result;

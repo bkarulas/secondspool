@@ -12,7 +12,7 @@ class Game {
 		INNER JOIN nhl_team h ON h.id = s.home_id
 		INNER JOIN nhl_team v ON v.id = s.vis_id
 		WHERE s.gametime >= NOW()
-		ORDER BY s.id;`;
+		ORDER BY s.gametime, s.id;`;
 		try {
 			let result = await this.pool.query(query);
 			return result;
